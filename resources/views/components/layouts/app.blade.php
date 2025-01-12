@@ -17,15 +17,40 @@
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
+  
+
     @livewireStyles
 </head>
 <body>
 
-   <div id="app" class="d-flex mt-4 container-fluid">
     @livewire("components.side-bar")
+   
+    <!-- Main Content -->
+<div class="content">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Navbar</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+              <a class="nav-link active" aria-current="page" href="#">Home</a>
+              <a class="nav-link" href="#">Features</a>
+              <a class="nav-link" href="#">Pricing</a>
+              <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+            </div>
+          </div>
+        </div>
+      </nav>
+      
+    <h1>Welcome to the Sidebar with Accordion</h1>
+    <p>This is a modern sidebar with an accordion section for nested items. Feel free to customize it!</p>
     {{ $slot }}
+  </div>
+    
+    
 
-   </div>
 
     @livewireScripts
     
