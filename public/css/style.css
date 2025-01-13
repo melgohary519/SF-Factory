@@ -1,3 +1,28 @@
-#sidebar{
-    height: 100vh;
+
+body{
+    color: white;
+
 }
+.content{
+    padding: 5px;
+}
+.homepage .row div{
+    background: gray;
+    padding: 1%;
+    font-size: 20px;
+}
+.homepage .row{
+    column-gap: 10px;
+}
+.headNav{
+    /* column-gap: 10px; */
+    margin-left: 25px;
+    font-size: 20px;
+
+}
+
+.headNav div{
+    padding: 1%;
+    border-right: 5px solid white;
+}
+

@@ -9,4 +9,4 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/', \App\Livewire\Welcome::class);
+Route::get('/', \App\Livewire\Pages\HomePage::class);
