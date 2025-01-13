@@ -164,36 +164,55 @@
             font-size: larger;
             font-weight: bold;
         }
+        .sidebar .nav-link{
+          justify-content: center
+        }
     </style>
 
     <!-- Sidebar -->
     <div class="sidebar">
         <div class="logo">Logo</div>
-        <nav class="nav flex-column">
+        <nav class="nav flex-column text-center">
             <a class="nav-link" href="/">
-                <i class="bi bi-calendar-plus-fill"></i>
+                {{-- <i class="bi bi-calendar-plus-fill"></i> --}}
                 الصفحة الرئيسية
             </a>
             <a class="nav-link" href="#buy">
-                <i class="bi bi-cart-fill"></i>
+                {{-- <i class="bi bi-cart-fill"></i> --}}
                 الشراء
             </a>
             <a class="nav-link" href="#sales">
-                <i class="bi bi-box-arrow-in-up"></i>
+                {{-- <i class="bi bi-box-arrow-in-up"></i> --}}
                 البيع
             </a>
             <a class="nav-link" href="#shipping">
-                <i class="bi bi-truck"></i>
+                {{-- <i class="bi bi-truck"></i> --}}
                 الشحن
             </a>
             <a class="nav-link" href="#expenses">
-                <i class="bi bi-wallet-fill"></i>
+                {{-- <i class="bi bi-wallet-fill"></i> --}}
                 الصرفيات
             </a>
             <a class="nav-link" href="#profits">
-                <i class="bi bi-bar-chart-fill"></i>
+                {{-- <i class="bi bi-bar-chart-fill"></i> --}}
                 الارباح
             </a>
+            <a class="nav-link" href="#profits">
+              {{-- <i class="bi bi-bar-chart-fill"></i> --}}
+              الحوالات
+          </a>
+          <a class="nav-link" href="#profits">
+            {{-- <i class="bi bi-bar-chart-fill"></i> --}}
+            الموردين
+        </a>
+        <a class="nav-link" href="#profits">
+          {{-- <i class="bi bi-bar-chart-fill"></i> --}}
+          التجار
+      </a>
+      <a class="nav-link" href="{{route('items')}}">
+        {{-- <i class="bi bi-bar-chart-fill"></i> --}}
+        المواد
+    </a>
         </nav>
     </div>
 
