@@ -1,4 +1,4 @@
-<div class="homepage mt-5" >
+<div class="homepage mt-5 text-center" >
         <div class="row mb-3 g-3">
           <div class="col p-3">
             فواتير الشراء
