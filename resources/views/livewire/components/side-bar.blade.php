@@ -209,7 +209,7 @@
           {{-- <i class="bi bi-bar-chart-fill"></i> --}}
           التجار
       </a>
-      <a class="nav-link" href="{{route('items')}}">
+      <a class="nav-link" href="{{route('items.add')}}">
         {{-- <i class="bi bi-bar-chart-fill"></i> --}}
         المواد
     </a>

@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Livewire\Pages;
+namespace App\Livewire\Items;
 
 use Barryvdh\Debugbar\Facades\Debugbar;
 use Livewire\Component;
 
-class Items extends Component
+class AddItem extends Component
 {
     public $weight;
     public $goodsType;
@@ -21,7 +21,7 @@ class Items extends Component
     {
 
         session()->flash("page_name", "المواد");
-        return view('livewire.pages.items');
+        return view('livewire.items.add-item');
     }
 
     public function saveData()
