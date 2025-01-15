@@ -20,7 +20,7 @@ class AddItem extends Component
     public function render()
     {
 
-        session()->flash("page_name", "المواد");
+        session()->flash("page_name", value: "المواد");
         return view('livewire.items.add-item');
     }
 
@@ -67,8 +67,9 @@ class AddItem extends Component
                 'dollar_rate' => $this->dollarRate,
                 'dollar_value' => $this->dollarValue,
             ]);
-            
+
         session()->flash('message', 'تم حفظ البيانات بنجاح!');
+        $this->reset();
 
     }
     public function clearForm()
@@ -82,7 +83,7 @@ class AddItem extends Component
             $this->updateDollarValue();
         }
     }
-  
+
     public function updateDollarValue()
     {
         if ($this->purchasePrice && $this->dollarRate) {

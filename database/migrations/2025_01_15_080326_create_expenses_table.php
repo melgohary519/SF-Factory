@@ -11,17 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('items', function (Blueprint $table) {
-            $table->id(); // Primary key
-            $table->float('weight');
-            $table->string('goods_type');
-            $table->date('purchase_date');
-            $table->string('partner_name');
-            $table->string('supplier_name');
-            $table->string('payment_type');
+        Schema::create('expenses', function (Blueprint $table) {
+            $table->id();
+            $table->date('expense_date');
             $table->decimal('purchase_price', 10, 2);
             $table->decimal('dollar_rate', 10, 2);
             $table->decimal('dollar_value', 10, 2);
+            $table->text('details');
             $table->timestamps();
         });
     }
@@ -31,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('items');
+        Schema::dropIfExists('expenses');
     }
 };

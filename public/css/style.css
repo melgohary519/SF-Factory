@@ -4,11 +4,32 @@ body{
     font-size: 20px;
     background: #272E3A;
 }
+.color-white{
+    color: white !important;
+}
 .content{
     padding: 5px;
 }
+.nav-slogan{
+    background: #7826AC;
+}
+.nav-pagename{
+    background: #6C1163;
+}
+.bg1{
+    background: #530C7F !important;
+    background-color: #530C7F !important;
+}
+.bg4{
+    background: #323944 !important;
+}
+
+.homepage img{
+    background: transparent !important;
+    border: 0;
+}
 .homepage .row div{
-    background: gray;
+    background: #323944;
     padding: 1%;
     font-size: 20px;
 }
@@ -27,6 +48,9 @@ body{
     border-right: 5px solid white;
 }
 
+.pagniateConainer p{
+    color: white !important;
+}
 
 
 
@@ -41,13 +65,18 @@ body{
 }
 .itemspage .col{
     text-align: center;
-    background-color: gray;
     padding: 1%;
     font-size: 140% !important;
 }
+.itemspage input {
+    background: transparent !important;
+}
+.itemspage .form-label{
+    margin: 4px 0;
+}
 .itemspage .form-check-input:checked {
     background-color: #007bff !important;
-    border-color: white !important; 
+    border-color: white !important;
   }
   .itemspage .buttons *{
     font-size: 160% !important;
@@ -65,6 +94,23 @@ body{
     font-weight: bold !important;
   }
   table th, table td {
-    border: 1px solid #000; 
-    padding: 8px; 
+    border: 1px solid #000;
+    padding: 8px;
+}
+.itemspage label{
+    width: 100%;
+    background: #323944;
+    padding: 2%;
+}
+.itemspage .form-check-label{
+    background: initial !important;
+}
+
+
+.table-footer div{
+    padding: 1%;
+}
+
+.totals ,.totals th{
+    background-color: #0d8b0d !important;
 }

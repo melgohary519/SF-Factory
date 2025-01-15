@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Supplier;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -17,6 +18,17 @@ class DatabaseSeeder extends Seeder
         $this->call([
             ItemSeeder::class,
         ]);
-        
+
+        Supplier::create([
+            'name' => "محمد",
+            'phone' => "01017731403",
+            'address' => "العمار",
+        ]);
+        Supplier::create([
+            'name' => "احمد",
+            'phone' => "0155555",
+            'address' => "الجيزة",
+        ]);
+
     }
 }

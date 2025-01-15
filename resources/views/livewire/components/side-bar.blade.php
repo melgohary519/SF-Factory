@@ -177,7 +177,7 @@
                 {{-- <i class="bi bi-calendar-plus-fill"></i> --}}
                 الصفحة الرئيسية
             </a>
-            <a class="nav-link" href="#buy">
+            <a class="nav-link" href="{{ route("purchase.invoice.add") }}">
                 {{-- <i class="bi bi-cart-fill"></i> --}}
                 الشراء
             </a>
@@ -189,7 +189,7 @@
                 {{-- <i class="bi bi-truck"></i> --}}
                 الشحن
             </a>
-            <a class="nav-link" href="#expenses">
+            <a class="nav-link" href="{{route('expenses.add')}}">
                 {{-- <i class="bi bi-wallet-fill"></i> --}}
                 الصرفيات
             </a>
@@ -201,7 +201,7 @@
               {{-- <i class="bi bi-bar-chart-fill"></i> --}}
               الحوالات
           </a>
-          <a class="nav-link" href="#profits">
+          <a class="nav-link" href="{{ route('suppliers.list') }}">
             {{-- <i class="bi bi-bar-chart-fill"></i> --}}
             الموردين
         </a>
@@ -209,7 +209,7 @@
           {{-- <i class="bi bi-bar-chart-fill"></i> --}}
           التجار
       </a>
-      <a class="nav-link" href="{{route('items.add')}}">
+      <a class="nav-link" href="{{route('items.list')}}">
         {{-- <i class="bi bi-bar-chart-fill"></i> --}}
         المواد
     </a>
