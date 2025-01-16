@@ -1,11 +1,10 @@
 <div class="container-fluid itemspage mt-5">
     <div class="row">
 
-
         <div class="col mb-3 text-center">
-            <label for="dollarValueInput" class="form-label">قيمة الدولار</label>
-            <input type="number" class="form-control" id="dollarValueInput" wire:model="dollarValue" readonly>
-            @error('dollarValue')
+            <label for="expenseDateInput" class="form-label">تاريخ الصرف</label>
+            <input type="date" class="form-control" id="expenseDateInput" wire:model="expenseDate">
+            @error('expenseDate')
                 <div class="bg-warning p-2 text-danger">{{ $message }}</div>
             @enderror
         </div>
@@ -26,12 +25,15 @@
         </div>
 
         <div class="col mb-3 text-center">
-            <label for="expenseDateInput" class="form-label">تاريخ الصرف</label>
-            <input type="date" class="form-control" id="expenseDateInput" wire:model="expenseDate">
-            @error('expenseDate')
+            <label for="dollarValueInput" class="form-label">قيمة الدولار</label>
+            <input type="number" class="form-control" id="dollarValueInput" wire:model="dollarValue" readonly>
+            @error('dollarValue')
                 <div class="bg-warning p-2 text-danger">{{ $message }}</div>
             @enderror
         </div>
+        
+
+        
     </div>
 
     <div class="row">

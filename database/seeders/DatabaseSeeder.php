@@ -15,10 +15,7 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         // User::factory(10)->create();
-        $this->call([
-            ItemSeeder::class,
-        ]);
-
+        
         Supplier::create([
             'name' => "محمد",
             'phone' => "01017731403",
@@ -29,6 +26,10 @@ class DatabaseSeeder extends Seeder
             'phone' => "0155555",
             'address' => "الجيزة",
         ]);
-
+        $this->call([
+            ItemSeeder::class,
+            PurchaseInvoiceSeeder::class
+        ]);
+        
     }
 }

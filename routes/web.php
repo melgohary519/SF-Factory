@@ -23,5 +23,9 @@ Route::get('/suppliers/add', \App\Livewire\Suppliers\AddSupplier::class)->name("
 Route::get('/suppliers/{supplier_id}', \App\Livewire\Suppliers\Supplieraccount::class)->name("suppliers.account");
 
 Route::get('/purchase/invoice/add', \App\Livewire\Purchases\AddPurchaseInvoice::class)->name("purchase.invoice.add");
+Route::get('/sales/invoice/add', \App\Livewire\Sales\AddSalesInvoice::class)->name("sales.invoice.add");
+Route::get('/traders/add', \App\Livewire\Traders\AddTrader::class)->name("traders.add");
+Route::get('/traders', \App\Livewire\Traders\ListTraders::class)->name("traders.list");
+Route::get('/traders/{trader_id}', \App\Livewire\Traders\TraderAccount::class)->name("traders.account");
 
 

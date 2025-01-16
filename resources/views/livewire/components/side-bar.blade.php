@@ -181,7 +181,7 @@
                 {{-- <i class="bi bi-cart-fill"></i> --}}
                 الشراء
             </a>
-            <a class="nav-link" href="#sales">
+            <a class="nav-link" href="{{ route('sales.invoice.add') }}">
                 {{-- <i class="bi bi-box-arrow-in-up"></i> --}}
                 البيع
             </a>
@@ -205,10 +205,10 @@
             {{-- <i class="bi bi-bar-chart-fill"></i> --}}
             الموردين
         </a>
-        <a class="nav-link" href="#profits">
-          {{-- <i class="bi bi-bar-chart-fill"></i> --}}
-          التجار
-      </a>
+        <a class="nav-link" href="{{ route('traders.add') }}">
+            {{-- <i class="bi bi-person-fill"></i> --}}
+            التجار
+        </a>
       <a class="nav-link" href="{{route('items.list')}}">
         {{-- <i class="bi bi-bar-chart-fill"></i> --}}
         المواد

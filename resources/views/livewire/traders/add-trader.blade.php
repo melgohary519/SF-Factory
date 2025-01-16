@@ -1,32 +1,28 @@
 <div class="container-fluid itemspage mt-5">
-    @livewire('suppliers.nav', ['active' => 'add'])
+    @livewire('traders.nav', ['active' => 'add'])
     <div class="row">
-
         <div class="col mb-3 text-center">
-            <label for="supplierNameInput" class="form-label">اسم المورد</label>
-            <input type="text" class="form-control" id="supplierNameInput" wire:model="supplierName">
-            @error('supplierName')
+            <label for="traderNameInput" class="form-label">اسم التاجر</label>
+            <input type="text" class="form-control" id="traderNameInput" wire:model="traderName">
+            @error('traderName')
                 <div class="bg-warning p-2 text-danger">{{ $message }}</div>
             @enderror
         </div>
 
-       
-
         <div class="col mb-3 text-center">
-            <label for="supplierPhoneInput" class="form-label">رقم الهاتف</label>
-            <input type="text" class="form-control" id="supplierPhoneInput" wire:model="supplierPhone">
-            @error('supplierPhone')
+            <label for="traderPhoneInput" class="form-label">رقم الهاتف</label>
+            <input type="text" class="form-control" id="traderPhoneInput" wire:model="traderPhone">
+            @error('traderPhone')
                 <div class="bg-warning p-2 text-danger">{{ $message }}</div>
             @enderror
         </div>
         <div class="col mb-3 text-center">
-            <label for="supplierAddressInput" class="form-label">عنوان المورد</label>
-            <input type="text" class="form-control" id="supplierAddressInput" wire:model="supplierAddress">
-            @error('supplierAddress')
+            <label for="traderAddressInput" class="form-label">عنوان التاجر</label>
+            <input type="text" class="form-control" id="traderAddressInput" wire:model="traderAddress">
+            @error('traderAddress')
                 <div class="bg-warning p-2 text-danger">{{ $message }}</div>
             @enderror
         </div>
-        
 
     </div>
 

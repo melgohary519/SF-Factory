@@ -1,5 +1,5 @@
 <div class="container-fluid itemspage mt-5">
-    @livewire('suppliers.nav', ['active' => 'list'])
+    @livewire('traders.nav', ['active' => 'list'])
 
     <div class="tableList p-3">
         <table class="table table-striped">
@@ -13,13 +13,13 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($suppliers as $supplier)
+                @foreach ($traders as $trader)
                 <tr>
-                    <td>{{ $supplier->id }}</td>
-                    <td>{{ $supplier->name }}</td>
-                    <td>{{ $supplier->phone }}</td>
-                    <td>{{ $supplier->address }}</td>
-                    <td><a href="{{ route('suppliers.account', $supplier) }}">اضغط هنا</a></td>
+                    <td>{{ $trader->id }}</td>
+                    <td>{{ $trader->name }}</td>
+                    <td>{{ $trader->phone }}</td>
+                    <td>{{ $trader->address }}</td>
+                    <td><a href="{{ route('traders.account', $trader) }}">اضغط هنا</a></td>
                 </tr>
                 @endforeach
             </tbody>
@@ -27,6 +27,6 @@
     </div>
 
     <div class="mt-2 pagniateConainer">
-        {{ $suppliers->links() }}
+        {{ $traders->links() }}
     </div>
 </div>
