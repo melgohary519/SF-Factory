@@ -22,6 +22,7 @@
             <thead>
                 <tr>
                     <th scope="col"> رقم</th>
+                    <th scope="col"> المخزن</th>
                     <th scope="col"> الكمية</th>
                     <th scope="col"> التاريخ</th>
                     <th scope="col">اسم المورد</th>
@@ -34,6 +35,7 @@
                 @foreach ($items as $item)
                 <tr>
                     <td>{{ $item->id }}</td>
+                    <td>{{ $item->inventory_name }}</td>
                     <td>{{ $item->weight }}</td>
                     <td>{{ $item->created_at->format("Y-m-d") }}</td>
                     <td>{{ $item->supplier_name }}</td>

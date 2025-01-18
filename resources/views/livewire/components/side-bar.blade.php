@@ -197,7 +197,7 @@
                 {{-- <i class="bi bi-bar-chart-fill"></i> --}}
                 الارباح
             </a>
-            <a class="nav-link" href="#profits">
+            <a class="nav-link" href="{{route('transfers.list')}}">
               {{-- <i class="bi bi-bar-chart-fill"></i> --}}
               الحوالات
           </a>

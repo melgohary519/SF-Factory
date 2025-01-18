@@ -19,7 +19,7 @@
             <label for="weightInput" class="form-label">الوزن</label>
             <div class="input-group">
                 <span class="input-group-text rounded-start-0 rounded-end" id="basic-addon2">KG</span>
-                <input type="text" class="form-control" id="weightInput" wire:model="weight" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                <input type="number" class="form-control" id="weightInput" wire:model="weight" aria-label="Recipient's username" aria-describedby="basic-addon2">
             </div>
             @error('weight')
                 <div class="bg-warning p-2 text-danger">{{ $message }}</div>

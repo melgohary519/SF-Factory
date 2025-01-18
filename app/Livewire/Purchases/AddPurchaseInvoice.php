@@ -4,6 +4,7 @@ namespace App\Livewire\Purchases;
 
 use App\Models\PurchaseInvoice;
 use App\Models\Supplier;
+use App\Models\Transfer;
 use Livewire\Component;
 
 class AddPurchaseInvoice extends Component
@@ -93,6 +94,24 @@ class AddPurchaseInvoice extends Component
             'car_type' => $this->car_type,
             'car_owner_name' => $this->car_owner_name,
         ]);
+
+        if ($this->paymentType == "cash") {
+            Transfer::create([
+                'reason' => "دفعة عن بضاعة",
+                'type' => "نقدي مباشر",
+                'person_type' => "supplier",
+                'transfer_date' => $this->purchaseDate,
+                'amount' => $this->purchasePrice,
+                'dollar_rate' => $this->dollarRate,
+                'dollar_value' => $this->dollarValue,
+                'person_id' => $this->supplier,
+                'person_name' => $this->supplierName,
+                'person_address' => $this->supplierAddress,
+                'person_phone' => $this->supplierPhone,
+                'recipient_name' => "",
+                'recipient_phone' => "",
+            ]);
+        }
 
         session()->flash('message', 'تم حفظ البيانات بنجاح!');
         $this->reset();

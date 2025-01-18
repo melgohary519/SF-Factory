@@ -22,7 +22,7 @@
             <label for="weightInput" class="form-label">الوزن</label>
             <div class="input-group">
                 <span class="input-group-text rounded-start-0 rounded-end" id="basic-addon2">KG</span>
-                <input type="text" class="form-control" id="weightInput" wire:model="weight" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                <input type="number" class="form-control" id="weightInput" wire:model="weight" aria-label="Recipient's username" aria-describedby="basic-addon2">
             </div>
             @error('weight') 
                 <div class="bg-warning p-2 text-danger">{{ $message }}</div>
@@ -31,10 +31,25 @@
     </div>
 
     <div class="row justify-content-center">
+
+        <div class="col mb-3 text-center">
+            <label for="InventoryNameInput" class="form-label">اسم المخزن</label>
+            <input type="text" class="form-control" id="InventoryNameInput" wire:model="inventoryName">
+            @error('inventoryName') 
+            <div class="bg-warning p-2 text-danger">{{ $message }}</div>
+            @enderror
+        </div>
+        
         <div class="col mb-3 text-center">
             <label for="supplierNameInput" class="form-label">اسم المورد</label>
-            <input type="text" class="form-control" id="supplierNameInput" wire:model="supplierName">
-            @error('supplierName') 
+            <input type="hidden" wire:model='supplierName'>
+            <select class="form-select form-select-lg bg4 text-end bg-transparent color-white" id="supplierNameInput" wire:model.live="supplier">
+                <option value="">اختر المورد</option>
+                @foreach($suppliers as $supplier)
+                    <option value="{{ $supplier->id }}">{{ $supplier->name }}</option>
+                @endforeach
+            </select>
+            @error('supplierName')
                 <div class="bg-warning p-2 text-danger">{{ $message }}</div>
             @enderror
         </div>

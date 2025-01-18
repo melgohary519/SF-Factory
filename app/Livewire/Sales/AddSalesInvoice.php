@@ -4,6 +4,7 @@ namespace App\Livewire\Sales;
 
 use App\Models\SalesInvoice;
 use App\Models\Trader;
+use App\Models\Transfer;
 use Exception;
 use Livewire\Component;
 
@@ -101,6 +102,23 @@ class AddSalesInvoice extends Component
             'car_type' => $this->car_type,
             'car_owner_name' => $this->car_owner_name,
         ]);
+        if ($this->paymentType == "cash") {
+            Transfer::create([
+                'reason' => "دفعة عن بضاعة",
+                'type' => "نقدي مباشر",
+                'person_type' => "trader",
+                'transfer_date' => $this->saleDate,
+                'amount' => $this->salePrice,
+                'dollar_rate' => $this->dollarRate,
+                'dollar_value' => $this->dollarValue,
+                'person_id' => $this->trader,
+                'person_name' => $this->traderName,
+                'person_address' => $this->traderAddress,
+                'person_phone' => $this->traderPhone,
+                'recipient_name' => "",
+                'recipient_phone' => "",
+            ]);
+        }
 
         session()->flash('message', 'تم حفظ البيانات بنجاح!');
         $this->reset();

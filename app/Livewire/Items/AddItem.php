@@ -2,14 +2,18 @@
 
 namespace App\Livewire\Items;
 
+use App\Models\Supplier;
 use Barryvdh\Debugbar\Facades\Debugbar;
 use Livewire\Component;
 
 class AddItem extends Component
 {
+    public $suppliers;
     public $weight;
     public $goodsType;
+    public $inventoryName;
     public $purchaseDate;
+    public $supplier;
     public $partnerName;
     public $supplierName;
     public $paymentType;
@@ -21,6 +25,7 @@ class AddItem extends Component
     {
 
         session()->flash("page_name", value: "المواد");
+        $this->suppliers = Supplier::all();
         return view('livewire.items.add-item');
     }
 
@@ -29,6 +34,7 @@ class AddItem extends Component
         $this->validate([
             'weight' => 'required|numeric',
             'goodsType' => 'required|string',
+            'inventoryName' => 'required|string',
             'purchaseDate' => 'required|date',
             'partnerName' => 'required|string',
             'supplierName' => 'required|string',
@@ -40,6 +46,7 @@ class AddItem extends Component
                 'weight.required' => 'الوزن مطلوب',
                 'weight.numeric' => 'الوزن يجب أن يكون رقم',
                 'goodsType.required' => 'نوع البضاعة مطلوب',
+                'inventoryName.required' => 'اسم المخزن مطلوب',
                 'goodsType.string' => 'نوع البضاعة يجب أن يكون نص',
                 'purchaseDate.required' => 'تاريخ الشراء مطلوب',
                 'purchaseDate.date' => 'تاريخ الشراء غير صالح',
@@ -59,6 +66,7 @@ class AddItem extends Component
             \App\Models\Item::create([
                 'weight' => $this->weight,
                 'goods_type' => $this->goodsType,
+                "inventory_name" => $this->inventoryName,
                 'purchase_date' => $this->purchaseDate,
                 'partner_name' => $this->partnerName,
                 'supplier_name' => $this->supplierName,
@@ -82,7 +90,17 @@ class AddItem extends Component
         if ($name == 'dollarRate' || $name == 'purchasePrice') {
             $this->updateDollarValue();
         }
+        if($name == "supplier"){
+            $data = Supplier::find($value);
+            if ($data) {
+                $this->supplierName = $data->name;
+            }else{
+                $this->supplierName = "";
+            }
+        }
     }
+
+    
 
     public function updateDollarValue()
     {

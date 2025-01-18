@@ -1,5 +1,9 @@
 <?php
 
+use App\Livewire\Transfers\ListTransfers;
+use App\Livewire\Transfers\AddTransfer;
+use App\Livewire\Transfers\TransferAccountDetails;
+use App\Livewire\Transfers\TransferAccountPage;
 use App\Models\Supplier;
 use Illuminate\Support\Facades\Route;
 
@@ -27,5 +31,10 @@ Route::get('/sales/invoice/add', \App\Livewire\Sales\AddSalesInvoice::class)->na
 Route::get('/traders/add', \App\Livewire\Traders\AddTrader::class)->name("traders.add");
 Route::get('/traders', \App\Livewire\Traders\ListTraders::class)->name("traders.list");
 Route::get('/traders/{trader_id}', \App\Livewire\Traders\TraderAccount::class)->name("traders.account");
+
+Route::get('/transfers', ListTransfers::class)->name('transfers.list');
+Route::get('/transfers/add', AddTransfer::class)->name('transfers.add');
+Route::get('/transfers/account', TransferAccountPage::class)->name('transfers.account');
+Route::get('/transfers/account/details/{type}', TransferAccountDetails::class)->name('transfers.account.details');
 
 

@@ -22,6 +22,11 @@ body{
 }
 .bg4{
     background: #323944 !important;
+    background-color: #323944 !important;
+}
+.bg6{
+    background: #e55a5a !important;
+    background-color: #e55a5a !important;
 }
 
 .homepage img{

@@ -11,6 +11,7 @@ class Item extends Model
     protected $fillable = [
         'weight',
         'goods_type',
+        'inventory_name',
         'purchase_date',
         'partner_name',
         'supplier_name',

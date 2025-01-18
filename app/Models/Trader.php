@@ -16,4 +16,8 @@ class Trader extends Model
     {
         return $this->hasMany(SalesInvoice::class);
     }
+    public function transfers()
+    {
+        return $this->hasMany(Transfer::class, 'person_id')->where('person_type', 'trader');
+    }
 }

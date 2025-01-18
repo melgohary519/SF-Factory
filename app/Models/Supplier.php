@@ -18,7 +18,10 @@ class Supplier extends Model
     {
         return $this->hasMany(PurchaseInvoice::class);
     }
-
+    public function transfers()
+    {
+        return $this->hasMany(Transfer::class, 'person_id')->where('person_type', 'supplier');
+    }
 
 
 }

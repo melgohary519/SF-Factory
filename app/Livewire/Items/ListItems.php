@@ -22,7 +22,10 @@ class ListItems extends Component
             ->get();
 
             if ($this->selectedItem == "") {
-            $this->selectedItem = $select_options->first()->goods_type;
+            $firstOption = $select_options->first();
+            if ($firstOption) {
+                $this->selectedItem = $firstOption->goods_type;
+            }
         }
 
         $items = Item::where("goods_type","=",$this->selectedItem);

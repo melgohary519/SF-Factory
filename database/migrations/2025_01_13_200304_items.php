@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id(); // Primary key
             $table->float('weight');
             $table->string('goods_type');
+            $table->string('inventory_name');
             $table->date('purchase_date');
             $table->string('partner_name');
             $table->string('supplier_name');
