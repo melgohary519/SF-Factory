@@ -1,7 +1,9 @@
 <div class="container-fluid itemspage mt-5">
     @livewire('suppliers.nav', ['active' => 'add'])
-    <form>
+
+    <form wire:submit.prevent="saveData" action="#" method="POST" enctype="multipart/form-data">
         @csrf
+        @method('PATCH')
     <div class="row">
 
         <div class="col mb-3 text-center">
@@ -32,6 +34,7 @@
 
     </div>
 </form>
+
     <div class="d-flex gap-3 justify-content-center buttons mt-5">
         <button type="button" class="btn btn-success btn-lg p-4 w-25" wire:click="saveData">تأكيد</button>
         <button type="button" class="btn btn-danger btn-lg p-4 w-25" wire:click="clearForm">افراغ / حذف</button>
