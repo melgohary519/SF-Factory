@@ -1,9 +1,6 @@
 <div class="container-fluid itemspage mt-5">
     @livewire('suppliers.nav', ['active' => 'add'])
-
-    <form wire:submit="saveData" action="#" method="POST">
-        @csrf
-        @method('PATCH')
+    
     <div class="row">
 
         <div class="col mb-3 text-center">
@@ -34,12 +31,11 @@
 
     </div>
 
-
     <div class="d-flex gap-3 justify-content-center buttons mt-5">
-        <button type="submit" class="btn btn-success btn-lg p-4 w-25" >تأكيد</button>
+        <button type="button" class="btn btn-success btn-lg p-4 w-25" wire:click="saveData">تأكيد</button>
         <button type="button" class="btn btn-danger btn-lg p-4 w-25" wire:click="clearForm">افراغ / حذف</button>
     </div>
-</form>
+
     @if (session()->has('message'))
         <div class="alert alert-success mt-3">
             {{ session('message') }}
