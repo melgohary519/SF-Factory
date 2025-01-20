@@ -1,5 +1,6 @@
 <div class="container-fluid itemspage mt-5">
     @livewire('suppliers.nav', ['active' => 'add'])
+    @csrf
     <div class="row">
 
         <div class="col mb-3 text-center">
