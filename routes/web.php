@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\PrintInvoice as ControllersPrintInvoice;
+use App\Livewire\Print\PrintInvoice;
 use App\Livewire\Transfers\ListTransfers;
 use App\Livewire\Transfers\AddTransfer;
 use App\Livewire\Transfers\TransferAccountDetails;
@@ -36,5 +38,8 @@ Route::get('/transfers', ListTransfers::class)->name('transfers.list');
 Route::get('/transfers/add', AddTransfer::class)->name('transfers.add');
 Route::get('/transfers/account', TransferAccountPage::class)->name('transfers.account');
 Route::get('/transfers/account/details/{type}', TransferAccountDetails::class)->name('transfers.account.details');
+
+// Route::get('/print/{type}/{id}', PrintInvoice::class)->name('print.invoice');
+Route::get('/print/{type}/{id}', [ControllersPrintInvoice::class, 'InvoiceDetails'])->name('print.invoice');
 
 

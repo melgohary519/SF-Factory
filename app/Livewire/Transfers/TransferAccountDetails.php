@@ -3,6 +3,7 @@
 namespace App\Livewire\Transfers;
 
 use App\Models\PurchaseInvoice;
+use App\Models\SalesInvoice;
 use App\Models\Supplier;
 use App\Models\Trader;
 use App\Models\Transfer;
@@ -26,6 +27,24 @@ class TransferAccountDetails extends Component
     public $restIraqy = 0;
     public $restDollary = 0;
 
+    // total
+    public $totalTraderTransferIraqy = 0;
+    public $totalTraderTransferDolary = 0;
+
+    public $totalTraderInvoicesIraqy = 0;
+    public $totalTraderInvoicesDolary = 0;
+
+    public $totalTraderRestIraqy = 0;
+    public $totalTraderResyDolary = 0;
+
+    public $totalSupplierTransferIraqy = 0;
+    public $totalSupplierTransferDolary = 0;
+
+    public $totalSupplierInvoicesIraqy = 0;
+    public $totalSupplierInvoicesDolary = 0;
+
+    public $totalSupplierRestIraqy = 0;
+    public $totalSupplierResyDolary = 0;
 
     public function mount($type)
     {
@@ -55,6 +74,26 @@ class TransferAccountDetails extends Component
 
     function reloadData()
     {
+        if ($this->type == "total") {
+            $this->totalTraderTransferIraqy = Transfer::where('person_type', 'trader')->sum("amount");
+            $this->totalTraderTransferDolary = Transfer::where('person_type', 'trader')->sum("dollar_rate");
+            $this->totalSupplierTransferIraqy = Transfer::where('person_type', 'supplier')->sum("amount");
+            $this->totalSupplierTransferDolary = Transfer::where('person_type', 'supplier')->sum("dollar_rate");
+
+            $this->totalTraderInvoicesIraqy = SalesInvoice::sum("sale_price");
+            $this->totalTraderInvoicesDolary =  SalesInvoice::sum("dollar_rate");
+
+            $this->totalSupplierInvoicesIraqy = PurchaseInvoice::sum("purchase_price");
+            $this->totalSupplierInvoicesDolary =  PurchaseInvoice::sum("dollar_rate");
+
+            $this->totalSupplierRestIraqy = $this->totalSupplierInvoicesIraqy - $this->totalSupplierTransferIraqy;
+            $this->totalSupplierResyDolary = $this->totalSupplierInvoicesDolary - $this->totalSupplierTransferDolary;
+
+            $this->totalTraderRestIraqy = $this->totalTraderInvoicesIraqy - $this->totalTraderTransferIraqy;
+            $this->totalTraderResyDolary = $this->totalTraderInvoicesDolary - $this->totalTraderTransferDolary;
+
+        }
+
         if (!empty($this->selectedPersonId)) {
 
 
@@ -74,7 +113,6 @@ class TransferAccountDetails extends Component
                 $this->transferDollary = $trader->transfers()->whereBetween('transfer_date', [$this->fromDate, $this->toDate])->sum("dollar_rate");
                 $this->restIraqy = $this->priceIraqy - $this->transferIraqy;
                 $this->restDollary = $this->priceDollary - $this->transferDollary;
-            } elseif ($this->type == "total") {
             }
         } else {
             $this->priceIraqy = 0;
