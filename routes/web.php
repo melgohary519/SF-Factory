@@ -9,6 +9,12 @@ use App\Livewire\Transfers\TransferAccountPage;
 use App\Models\Supplier;
 use Illuminate\Support\Facades\Route;
 
+Auth::routes([
+    'register' => false,
+    'reset' => false,
+    'verify' => false,
+]);
+
 Route::middleware(['auth'])->group(function () {
     Route::get('/', \App\Livewire\Pages\HomePage::class);
     Route::get('/items/add', \App\Livewire\Items\AddItem::class)->name("items.add");
@@ -41,8 +47,4 @@ Route::get('/home', function () {
     return redirect('/');
 });
 
-Auth::routes([
-    'register' => false,
-    'reset' => false,
-    'verify' => false,
-]);
+
