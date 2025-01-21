@@ -38,7 +38,11 @@ Route::get('/test', function () {
     return view('welcome');
 });
 Route::get('/home', function () {
-    redirect('/');
+    return redirect('/');
 });
 
-Auth::routes();
+Auth::routes([
+    'register' => false,
+    'reset' => false,
+    'verify' => false,
+]);
