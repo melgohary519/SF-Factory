@@ -15,6 +15,13 @@ Auth::routes([
     'verify' => false,
 ]);
 
+Route::get('/logout', function () {
+    Auth::logout();  
+    return redirect('/');
+})->name('logout');
+
+Route::get('/login', \App\Livewire\Users\Login::class)->name('login');
+
 Route::middleware(['auth'])->group(function () {
     Route::get('/', \App\Livewire\Pages\HomePage::class);
     Route::get('/items/add', \App\Livewire\Items\AddItem::class)->name("items.add");

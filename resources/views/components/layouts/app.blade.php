@@ -26,11 +26,20 @@
 
 <body>
 
-    @livewire("components.side-bar")
+    @php
+        $currentRoute = Route::currentRouteName();
+    @endphp
+    
+    @if ($currentRoute != "login")
+        @livewire("components.side-bar")
+    @endif
 
     <div class="content">
 
-        @livewire("components.nav-bar")
+        @if ($currentRoute != "login")
+            @livewire("components.nav-bar")
+        @endif
+        
         {{ $slot }}
 
     </div>
