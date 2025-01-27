@@ -171,7 +171,9 @@
 
     <!-- Sidebar -->
     <div class="sidebar">
-        <div class="logo">Logo</div>
+        <div class="logo p-0 m-0">
+            <img src="{{asset('images/LOGO-PNG.png')}}" alt="Logo" srcset="">
+        </div>
         <nav class="nav flex-column text-center">
             <a class="nav-link" href="/">
                 {{-- <i class="bi bi-calendar-plus-fill"></i> --}}
