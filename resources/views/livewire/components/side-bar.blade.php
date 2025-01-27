@@ -215,6 +215,10 @@
         {{-- <i class="bi bi-bar-chart-fill"></i> --}}
         المواد
     </a>
+    <a class="nav-link" href="{{route('users.list')}}">
+        {{-- <i class="bi bi-bar-chart-fill"></i> --}}
+        المستخدمين
+    </a>
         </nav>
     </div>
 

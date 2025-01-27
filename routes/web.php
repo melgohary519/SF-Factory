@@ -44,6 +44,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/transfers/account/details/{type}', TransferAccountDetails::class)->name('transfers.account.details');
 
     Route::get('/print/{type}/{id}', PrintInvoice::class)->name('print.invoice');
+
+    Route::get('/users/list', \App\Livewire\Users\ListUsers::class)->name('users.list');
+    Route::get('/users/add', \App\Livewire\Users\AddUser::class)->name('users.add');
+    Route::get('/users/account/{user_id}', \App\Livewire\Users\UserِAccount::class)->name('users.account');
 });
 
 Route::get('/test', function () {
