@@ -17,6 +17,7 @@ class ListItems extends Component
         session()->flash("page_name", value: "جميع المواد");
 
         $select_options = Item::query()
+            ->selectRaw('goods_type, MAX(id) as id')
             ->groupBy('goods_type')
             ->orderBy('goods_type', 'asc')
             ->get();
