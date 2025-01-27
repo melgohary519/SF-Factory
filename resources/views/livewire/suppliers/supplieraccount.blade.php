@@ -30,7 +30,7 @@
                 <td>{{ $invoice->weight }}</td>
                 <td>{{ $invoice->created_at->format("Y-m-d") }}</td>
                 <td>{{ $invoice->purchase_price }}</td>
-                <td>{{ $invoice->dollar_rate }} $</td>
+                <td>{{ $invoice->dollar_value }} $</td>
                 <td> <a href="#">click here</a> </td>
                 <td> <a href="#">click here</a> </td>
             </tr>
