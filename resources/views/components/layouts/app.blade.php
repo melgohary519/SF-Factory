@@ -7,7 +7,7 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    
+
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
@@ -29,7 +29,7 @@
     @php
         $currentRoute = Route::currentRouteName();
     @endphp
-    
+
     @if ($currentRoute != "login")
         @livewire("components.side-bar")
     @endif
@@ -39,10 +39,16 @@
         @if ($currentRoute != "login")
             @livewire("components.nav-bar")
         @endif
-        
+
         {{ $slot }}
 
+        @if ($currentRoute != "login")
+            @livewire("components.footer")
+        @endif
+
     </div>
+
+
 
     @livewireScripts
 
