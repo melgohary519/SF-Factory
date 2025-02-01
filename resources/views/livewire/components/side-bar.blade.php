@@ -187,10 +187,6 @@
                 {{-- <i class="bi bi-box-arrow-in-up"></i> --}}
                 البيع
             </a>
-            <a class="nav-link" href="#shipping">
-                {{-- <i class="bi bi-truck"></i> --}}
-                الشحن
-            </a>
             <a class="nav-link" href="{{route('expenses.add')}}">
                 {{-- <i class="bi bi-wallet-fill"></i> --}}
                 الصرفيات
