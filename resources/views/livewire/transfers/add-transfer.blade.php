@@ -44,14 +44,14 @@
             @enderror
         </div>
         <div class="col mb-3 text-center">
-            <label for="dollarRateInput" class="form-label">سعر الدولار</label>
+            <label for="dollarRateInput" class="form-label">قيمة الدولار</label>
             <input type="number" class="form-control" id="dollarRateInput" wire:model.live="dollarRate">
             @error('dollarRate') 
                 <div class="bg-warning p-2 text-danger">{{ $message }}</div>
             @enderror
         </div>
         <div class="col mb-3 text-center">
-            <label for="dollarValueInput" class="form-label">قيمة الدولار</label>
+            <label for="dollarValueInput" class="form-label">سعر الدولار</label>
             <input type="number" class="form-control" readonly id="dollarValueInput" wire:model.live="dollarValue">
             @error('dollarValue') 
                 <div class="bg-warning p-2 text-danger">{{ $message }}</div>
