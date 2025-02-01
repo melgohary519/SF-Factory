@@ -31,7 +31,7 @@
                     <td>{{ $transfer->person_type == "supplier" ? "مورد" : "تاجر" }}</td>
                     <td>{{ $transfer->transfer_date }}</td>
                     <td>{{ $transfer->amount }}</td>
-                    <td>{{ $transfer->dollar_rate }} $</td>
+                    <td>{{ $transfer->dollar_value }} $</td>
                     <td> <a href="#">click here</a> </td>
                     <td> <a href="#">click here</a> </td>
                 </tr>

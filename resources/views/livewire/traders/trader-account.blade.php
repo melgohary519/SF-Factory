@@ -28,7 +28,7 @@
                     <td>{{ $invoice->id }}</td>
                     <td>{{ $invoice->goods_type }}</td>
                     <td>{{ $invoice->weight }}</td>
-                    <td>{{ $invoice->created_at->format("Y-m-d") }}</td>
+                    <td>{{ $invoice->sale_date }}</td>
                     <td>{{ $invoice->purchase_price }}</td>
                     <td>{{ $invoice->dollar_value }} $</td>
                     <td> <a href="#">click here</a> </td>
