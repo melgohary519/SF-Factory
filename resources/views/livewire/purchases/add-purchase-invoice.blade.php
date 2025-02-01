@@ -100,14 +100,14 @@
             @enderror
         </div>
         <div class="col mb-3 text-center">
-            <label for="shippingDollarRateInput" class="form-label">سعر دولار الشحن</label>
+            <label for="shippingDollarRateInput" class="form-label">قيمة دولار الشحن</label>
             <input type="number" step="0.01" class="form-control" id="shippingDollarRateInput" wire:model.live="shipping_dollar_rate">
             @error('shipping_dollar_rate')
                 <div class="bg-warning p-2 text-danger">{{ $message }}</div>
             @enderror
         </div>
         <div class="col mb-3 text-center">
-            <label for="shippingDollarValueInput" class="form-label">قيمة دولار الشحن</label>
+            <label for="shippingDollarValueInput" class="form-label">سعر دولار الشحن</label>
             <input type="number" step="0.01" class="form-control" id="shippingDollarValueInput" wire:model="shipping_dollar_value">
             @error('shipping_dollar_value')
                 <div class="bg-warning p-2 text-danger">{{ $message }}</div>
