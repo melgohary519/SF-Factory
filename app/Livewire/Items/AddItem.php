@@ -20,6 +20,7 @@ class AddItem extends Component
     public $purchasePrice;
     public $dollarRate;
     public $dollarValue;
+    public $tonPrice;
 
     public function render()
     {
@@ -42,6 +43,7 @@ class AddItem extends Component
             'purchasePrice' => 'required|numeric',
             'dollarRate' => 'required|numeric',
             'dollarValue' => 'required|numeric',
+            'tonPrice' => 'required|numeric',
         ], [
                 'weight.required' => 'الوزن مطلوب',
                 'weight.numeric' => 'الوزن يجب أن يكون رقم',
@@ -61,6 +63,7 @@ class AddItem extends Component
                 'dollarRate.numeric' => 'سعر الدولار يجب أن يكون رقم',
                 'dollarValue.required' => 'قيمة الدولار مطلوبة',
                 'dollarValue.numeric' => 'قيمة الدولار يجب أن تكون رقم',
+                'tonPrice.required' => 'سعر الطن مطلوب',
             ]);
 
             \App\Models\Item::create([
@@ -74,6 +77,7 @@ class AddItem extends Component
                 'purchase_price' => $this->purchasePrice,
                 'dollar_rate' => $this->dollarRate,
                 'dollar_value' => $this->dollarValue,
+                'ton_price' => $this->tonPrice,
             ]);
 
         session()->flash('message', 'تم حفظ البيانات بنجاح!');
@@ -87,7 +91,7 @@ class AddItem extends Component
 
     public function updated($name, $value)
     {
-        if ($name == 'dollarRate' || $name == 'purchasePrice') {
+        if ($name == 'tonPrice' || $name == 'weight' ||  $name == 'dollarRate' || $name == 'purchasePrice') {
             $this->updateDollarValue();
         }
         if($name == "supplier"){
@@ -104,6 +108,9 @@ class AddItem extends Component
 
     public function updateDollarValue()
     {
+        if ($this->weight && $this->tonPrice) {
+            $this->purchasePrice = round($this->weight / 1000 * $this->tonPrice, 2);
+        }
         if ($this->purchasePrice && $this->dollarRate) {
             $this->dollarValue = round($this->purchasePrice / $this->dollarRate,2);
         } else {

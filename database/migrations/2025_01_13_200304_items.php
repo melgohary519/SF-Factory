@@ -23,6 +23,7 @@ return new class extends Migration
             $table->decimal('purchase_price', 10, 2);
             $table->decimal('dollar_rate', 10, 2);
             $table->decimal('dollar_value', 10, 2);
+            $table->string('ton_price');
             $table->timestamps();
         });
     }

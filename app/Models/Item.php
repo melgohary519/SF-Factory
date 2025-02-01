@@ -19,5 +19,6 @@ class Item extends Model
         'purchase_price',
         'dollar_rate',
         'dollar_value',
+        'ton_price',
     ];
 }

@@ -63,11 +63,18 @@
     </div>
 
     <div class="row">
-        
+
+        <div class="col mb-3 text-center">
+            <label for="tonPriceInput" class="form-label">سعر الطن</label>
+            <input type="number" class="form-control" id="tonPriceInput" wire:model.live="tonPrice">
+            @error('tonPrice')
+                <div class="bg-warning p-2 text-danger">{{ $message }}</div>
+            @enderror
+        </div>
         
         <div class="col mb-3 text-center">
             <label for="purchasePriceInput" class="form-label">سعر الشراء</label>
-            <input type="number" class="form-control" id="purchasePriceInput" wire:model.live="purchasePrice">
+            <input type="number" class="form-control" id="purchasePriceInput" wire:model.live="purchasePrice" readonly>
             @error('purchasePrice') 
                 <div class="bg-warning p-2 text-danger">{{ $message }}</div>
             @enderror
@@ -79,7 +86,8 @@
                 <div class="bg-warning p-2 text-danger">{{ $message }}</div>
             @enderror
         </div>
-
+    </div>
+        <div class="row">
         <div class="col mb-3 text-center">
             <label for="dollarValueInput" class="form-label">سعر الدولار</label>
             <input type="number" class="form-control" readonly id="dollarValueInput" wire:model.live="dollarValue">
