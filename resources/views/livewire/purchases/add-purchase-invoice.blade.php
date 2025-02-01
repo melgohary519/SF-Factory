@@ -10,7 +10,12 @@
         </div>
         <div class="col mb-3 text-center">
             <label for="goodsTypeInput" class="form-label">نوع البضاعة</label>
-            <input type="text" class="form-control" id="goodsTypeInput" wire:model="goodsType">
+            <select class="form-select form-select-lg bg4 text-end bg-transparent color-white" id="goodsTypeInput" wire:model="goodsType">
+                <option value="">اختر نوع البضاعة</option>
+                @foreach($items as $item)
+                    <option value="{{ $item->id }}">{{ $item->goods_type }}</option>
+                @endforeach
+            </select>
             @error('goodsType')
             <div class="bg-warning p-2 text-danger">{{ $message }}</div>
             @enderror

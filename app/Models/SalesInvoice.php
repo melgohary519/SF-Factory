@@ -24,6 +24,7 @@ class SalesInvoice extends Model
         'shipping_dollar_value',
         'car_owner_name',
         'car_type',
+        'ton_price',
     ];
 
     public function trader()

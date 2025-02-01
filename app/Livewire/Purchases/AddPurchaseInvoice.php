@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Purchases;
 
+use App\Models\Item;
 use App\Models\PurchaseInvoice;
 use App\Models\Supplier;
 use App\Models\Transfer;
@@ -30,10 +31,12 @@ class AddPurchaseInvoice extends Component
 
 
     public $suppliers;
+    public $items;
     public function render()
     {
         session()->flash("page_name", "فاتورة شراء");
         $this->suppliers = Supplier::all();
+        $this->items = Item::all();
         return view('livewire.purchases.add-purchase-invoice');
     }
 
@@ -75,9 +78,10 @@ class AddPurchaseInvoice extends Component
             'car_owner_name.required' => 'اسم صاحب السيارة مطلوب',
         ]);
 
+        $goodsType = Item::findOrFail($this->goodsType);
         PurchaseInvoice::create([
             'weight' => $this->weight,
-            'goods_type' => $this->goodsType,
+            'goods_type' => $goodsType->goods_type,
             'purchase_date' => $this->purchaseDate,
             'partner_name' => $this->partnerName,
             'supplier_id' => $this->supplier,

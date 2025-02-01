@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Sales;
 
+use App\Models\Item;
 use App\Models\SalesInvoice;
 use App\Models\Trader;
 use App\Models\Transfer;
@@ -27,13 +28,15 @@ class AddSalesInvoice extends Component
     public $traderPhone;
     public $car_type;
     public $car_owner_name;
+    public $tonPrice;
 
     public $traders;
-
+    public $items;
     public function render()
     {
         session()->flash("page_name", "فاتورة بيع");
         $this->traders = Trader::all();
+        $this->items = Item::all();
         return view('livewire.sales.add-sales-invoice');
     }
 
@@ -56,6 +59,7 @@ class AddSalesInvoice extends Component
             'traderPhone' => 'required|string',
             'car_type' => 'required|string',
             'car_owner_name' => 'required|string',
+            'tonPrice' => 'required|numeric',
         ], [
             'weight.required' => 'الوزن مطلوب',
             'goodsType.required' => 'نوع البضاعة مطلوب',
@@ -79,13 +83,15 @@ class AddSalesInvoice extends Component
             'traderPhone.required' => 'رقم هاتف التاجر مطلوب',
             'car_type.required' => 'نوع السيارة مطلوب',
             'car_owner_name.required' => 'اسم صاحب السيارة مطلوب',
+            'tonPrice.required' => 'سعر الطن مطلوب',
         ]);
 
 
         try {
+            $goodsType = Item::findOrFail($this->goodsType);
         SalesInvoice::create([
             'weight' => $this->weight,
-            'goods_type' => $this->goodsType,
+            'goods_type' =>  $goodsType->goods_type,
             'sale_date' => $this->saleDate,
             'partner_name' => $this->partnerName,
             'trader_id' => $this->trader,
@@ -101,6 +107,7 @@ class AddSalesInvoice extends Component
             'trader_phone' => $this->traderPhone,
             'car_type' => $this->car_type,
             'car_owner_name' => $this->car_owner_name,
+            'ton_price' => $this->tonPrice,
         ]);
         if ($this->paymentType == "cash") {
             Transfer::create([
@@ -134,7 +141,7 @@ class AddSalesInvoice extends Component
 
     public function updated($name, $value)
     {
-        if ($name == 'dollarRate' || $name == 'salePrice' || $name == 'shipping_fee' || $name == "shipping_dollar_rate") {
+        if ($name == 'tonPrice' || $name == 'weight' || $name == 'dollarRate' || $name == 'salePrice' || $name == 'shipping_fee' || $name == "shipping_dollar_rate") {
             $this->updateDollarValue();
         }
         if($name == "trader"){
@@ -153,6 +160,10 @@ class AddSalesInvoice extends Component
 
     public function updateDollarValue()
     {
+        if ($this->weight && $this->tonPrice) {
+            $this->salePrice = round($this->weight / 1000 * $this->tonPrice, 2);
+        }
+
         if ($this->salePrice && $this->dollarRate) {
             $this->dollarValue = round($this->salePrice / $this->dollarRate, 2);
         } else {

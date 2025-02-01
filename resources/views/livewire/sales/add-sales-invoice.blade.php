@@ -11,7 +11,13 @@
         
         <div class="col mb-3 text-center">
             <label for="goodsTypeInput" class="form-label">نوع البضاعة</label>
-            <input type="text" class="form-control" id="goodsTypeInput" wire:model="goodsType">
+            
+            <select class="form-select form-select-lg bg4 text-end bg-transparent color-white" id="goodsTypeInput" wire:model="goodsType">
+                <option value="">اختر نوع البضاعة</option>
+                @foreach($items as $item)
+                    <option value="{{ $item->id }}">{{ $item->goods_type }}</option>
+                @endforeach
+            </select>
             @error('goodsType') 
             <div class="bg-warning p-2 text-danger">{{ $message }}</div>
             @enderror
@@ -113,14 +119,23 @@
 
 
     <div class="row">
+
+        <div class="col mb-3 text-center">
+            <label for="tonPriceInput" class="form-label">سعر الطن</label>
+            <input type="number" class="form-control" id="tonPriceInput" wire:model.live="tonPrice">
+            @error('tonPrice')
+                <div class="bg-warning p-2 text-danger">{{ $message }}</div>
+            @enderror
+        </div>
         
         <div class="col mb-3 text-center">
             <label for="salePriceInput" class="form-label">سعر البيع عند البيع</label>
-            <input type="number" class="form-control" id="salePriceInput" wire:model.live="salePrice">
+            <input type="number" class="form-control" id="salePriceInput" wire:model.live="salePrice" readonly>
             @error('salePrice') 
                 <div class="bg-warning p-2 text-danger">{{ $message }}</div>
             @enderror
         </div>
+
         <div class="col mb-3 text-center">
             <label for="dollarRateInput" class="form-label">قيمة الدولار عند البيع</label>
             <input type="number" class="form-control" id="dollarRateInput" wire:model.live="dollarRate">
@@ -128,6 +143,8 @@
                 <div class="bg-warning p-2 text-danger">{{ $message }}</div>
             @enderror
         </div>
+    </div>
+    <div class="row">
         <div class="col mb-3 text-center">
             <label for="dollarValueInput" class="form-label">سعر الدولار</label>
             <input type="number" class="form-control" readonly id="dollarValueInput" wire:model.live="dollarValue">
@@ -135,6 +152,7 @@
                 <div class="bg-warning p-2 text-danger">{{ $message }}</div>
             @enderror
         </div>
+
         <div class="col mb-3 text-center">
             <label for="paymentInput" class="form-label">الدفع</label>
             <div class="d-flex justify-content-around">
