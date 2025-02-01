@@ -27,6 +27,7 @@ class AddPurchaseInvoice extends Component
     public $supplierPhone;
     public $car_type;
     public $car_owner_name;
+    public $tonPrice;
 
 
 
@@ -59,6 +60,8 @@ class AddPurchaseInvoice extends Component
             'supplierPhone' => 'required|string',
             'car_type' => 'required|string',
             'car_owner_name' => 'required|string',
+            'tonPrice' => 'required|numeric',
+
         ], [
             'weight.required' => 'الوزن مطلوب',
             'goodsType.required' => 'نوع البضاعة مطلوب',
@@ -76,6 +79,7 @@ class AddPurchaseInvoice extends Component
             'supplierPhone.required' => 'رقم هاتف المورد مطلوب',
             'car_type.required' => 'نوع السيارة مطلوب',
             'car_owner_name.required' => 'اسم صاحب السيارة مطلوب',
+            'tonPrice.required' => 'سعر الطن مطلوب',
         ]);
 
         $goodsType = Item::findOrFail($this->goodsType);
@@ -97,6 +101,7 @@ class AddPurchaseInvoice extends Component
             'supplier_phone' => $this->supplierPhone,
             'car_type' => $this->car_type,
             'car_owner_name' => $this->car_owner_name,
+            'ton_price' => $this->tonPrice,
         ]);
 
         if ($this->paymentType == "cash") {
@@ -129,7 +134,7 @@ class AddPurchaseInvoice extends Component
     public function updated($name, $value)
     {
         \Log::info($name);
-        if ($name == 'dollarRate' || $name == 'purchasePrice' || $name == 'shipping_fee' || $name == "shipping_dollar_rate") {
+        if ($name == 'tonPrice' || $name == 'weight' || $name == 'dollarRate' || $name == 'purchasePrice' || $name == 'shipping_fee' || $name == "shipping_dollar_rate") {
             $this->updateDollarValue();
         }
         if($name == "supplier"){
@@ -144,10 +149,14 @@ class AddPurchaseInvoice extends Component
                 $this->supplierAddress = "";
             }
         }
-    }
+}
 
     public function updateDollarValue()
     {
+        if ($this->weight && $this->tonPrice) {
+            $this->purchasePrice = round($this->weight / 1000 * $this->tonPrice, 2);
+        }
+
         if ($this->purchasePrice && $this->dollarRate) {
             $this->dollarValue = round($this->purchasePrice / $this->dollarRate, 2);
         } else {

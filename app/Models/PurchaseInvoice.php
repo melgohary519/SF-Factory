@@ -24,5 +24,6 @@ class PurchaseInvoice extends Model
         'shipping_dollar_value',
         'car_owner_name',
         'car_type',
+        'ton_price',
     ];
 }

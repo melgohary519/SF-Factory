@@ -34,6 +34,8 @@ return new class extends Migration
 
             $table->string('car_owner_name');
             $table->string('car_type');
+            $table->string('ton_price');
+
 
 
             $table->timestamps();

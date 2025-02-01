@@ -1,6 +1,6 @@
 <div class="container-fluid itemspage mt-5">
     <div class="row">
-        
+
         <div class="col mb-3 text-center">
             <label for="purchaseDateInput" class="form-label">تاريخ الشراء</label>
             <input type="date" class="form-control" id="purchaseDateInput" wire:model="purchaseDate">
@@ -62,7 +62,7 @@
             @enderror
         </div>
 
-        
+
     </div>
 
     <div class="row justify-content-center">
@@ -88,7 +88,7 @@
             @enderror
         </div>
 
-        
+
     </div>
 
     <div class="row justify-content-center">
@@ -113,17 +113,32 @@
                 <div class="bg-warning p-2 text-danger">{{ $message }}</div>
             @enderror
         </div>
-        
+
     </div>
 
     <div class="row justify-content-center">
         <div class="col mb-3 text-center">
+            <label for="tonPriceInput" class="form-label">سعر الطن</label>
+            <input type="number" class="form-control" id="tonPriceInput" wire:model.live="tonPrice">
+            @error('tonPrice')
+                <div class="bg-warning p-2 text-danger">{{ $message }}</div>
+            @enderror
+        </div>
+        <div class="col mb-3 text-center">
             <label for="purchasePriceInput" class="form-label">سعر الشراء </label>
-            <input type="number" class="form-control" id="purchasePriceInput" wire:model.live="purchasePrice">
+            <input type="number" class="form-control" id="purchasePriceInput" wire:model.live="purchasePrice" readonly>
             @error('purchasePrice')
                 <div class="bg-warning p-2 text-danger">{{ $message }}</div>
             @enderror
         </div>
+
+
+
+
+
+    </div>
+
+    <div class="row">
         <div class="col mb-3 text-center">
             <label for="dollarRateInput" class="form-label">قيمة الدولار عند الشراء</label>
             <input type="number" class="form-control" id="dollarRateInput" wire:model.live="dollarRate">
@@ -138,8 +153,6 @@
                 <div class="bg-warning p-2 text-danger">{{ $message }}</div>
             @enderror
         </div>
-
-        
 
         <div class="col mb-3 text-center">
             <label for="paymentInput" class="form-label">الدفع</label>
