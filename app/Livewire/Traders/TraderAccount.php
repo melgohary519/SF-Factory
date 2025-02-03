@@ -23,10 +23,10 @@ class TraderAccount extends Component
         $trader = Trader::findOrFail($this->trader_id);
 
         $this->totalCashDollar = $trader->invoices()->where("payment_type", "=", "cash")->sum("dollar_value");
-        $this->totalCashIraqy = $trader->invoices()->where("payment_type", "=", "cash")->sum("purchase_price");
+        $this->totalCashIraqy = $trader->invoices()->where("payment_type", "=", "cash")->sum("sales_price");
 
         $this->totalCreditDollar = $trader->invoices()->where("payment_type", "=", "credit")->sum("dollar_value");
-        $this->totalCreditIraqy = $trader->invoices()->where("payment_type", "=", "credit")->sum("purchase_price");
+        $this->totalCreditIraqy = $trader->invoices()->where("payment_type", "=", "credit")->sum("sales_price");
 
         return view('livewire.traders.trader-account', [
             "trader" => $trader,
