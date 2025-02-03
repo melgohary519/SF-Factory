@@ -76,15 +76,15 @@ class TransferAccountDetails extends Component
     {
         if ($this->type == "total") {
             $this->totalTraderTransferIraqy = Transfer::where('person_type', 'trader')->sum("amount");
-            $this->totalTraderTransferDolary = Transfer::where('person_type', 'trader')->sum("dollar_rate");
+            $this->totalTraderTransferDolary = Transfer::where('person_type', 'trader')->sum("dollar_value");
             $this->totalSupplierTransferIraqy = Transfer::where('person_type', 'supplier')->sum("amount");
-            $this->totalSupplierTransferDolary = Transfer::where('person_type', 'supplier')->sum("dollar_rate");
+            $this->totalSupplierTransferDolary = Transfer::where('person_type', 'supplier')->sum("dollar_value");
 
             $this->totalTraderInvoicesIraqy = SalesInvoice::sum("sale_price");
-            $this->totalTraderInvoicesDolary =  SalesInvoice::sum("dollar_rate");
+            $this->totalTraderInvoicesDolary =  SalesInvoice::sum("dollar_value");
 
             $this->totalSupplierInvoicesIraqy = PurchaseInvoice::sum("purchase_price");
-            $this->totalSupplierInvoicesDolary =  PurchaseInvoice::sum("dollar_rate");
+            $this->totalSupplierInvoicesDolary =  PurchaseInvoice::sum("dollar_value");
 
             $this->totalSupplierRestIraqy = $this->totalSupplierInvoicesIraqy - $this->totalSupplierTransferIraqy;
             $this->totalSupplierResyDolary = $this->totalSupplierInvoicesDolary - $this->totalSupplierTransferDolary;
