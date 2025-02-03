@@ -72,7 +72,7 @@
 
         <div class="row text-center">
             <span class="col-3 align-content-center color-white bg4">  السعر بالدولار</span>
-            <div class="col text-end bg1">{{ $totalDollarRate }} $</div>
+            <div class="col text-end bg1">{{ $totalDollarValue }} $</div>
         </div>
     </div>
 

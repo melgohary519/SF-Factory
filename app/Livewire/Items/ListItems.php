@@ -32,7 +32,7 @@ class ListItems extends Component
         $items = Item::where("goods_type","=",$this->selectedItem);
         $totalPurchasePrice = $items->sum("purchase_price");
         $totalWeight = $items->sum("weight");
-        $totalDollarRate = $items->sum("dollar_rate");
+        $totalDollarValue = $items->sum("dollar_value");
 
 
         return view('livewire.items.list-items',[
@@ -40,7 +40,7 @@ class ListItems extends Component
             "select_options" => $select_options,
             "totalPurchasePrice" => $totalPurchasePrice,
             "totalWeight" => $totalWeight,
-            "totalDollarRate" => $totalDollarRate,
+            "totalDollarValue" => $totalDollarValue,
         ]);
     }
 
