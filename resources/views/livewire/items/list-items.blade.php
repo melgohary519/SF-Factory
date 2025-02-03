@@ -37,7 +37,7 @@
                     <td>{{ $item->id }}</td>
                     <td>{{ $item->inventory_name }}</td>
                     <td>{{ $item->weight }}</td>
-                    <td>{{ $item->created_at->format("Y-m-d") }}</td>
+                    <td>{{ $item->purchase_date }}</td>
                     <td>{{ $item->supplier_name }}</td>
                     <td>{{ $item->partner_name }}</td>
                     <td>{{ $item->purchase_price }}</td>
