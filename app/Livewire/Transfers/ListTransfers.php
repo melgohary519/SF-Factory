@@ -16,9 +16,9 @@ class ListTransfers extends Component
         session()->flash("page_name", "الحوالات");
 
         $totalSupplierIraqi = Transfer::where('person_type', 'supplier')->sum('amount');
-        $totalSupplierDollar = Transfer::where('person_type', 'supplier')->sum('dollar_rate');
+        $totalSupplierDollar = Transfer::where('person_type', 'supplier')->sum('dollar_value');
         $totalTraderIraqi = Transfer::where('person_type', 'trader')->sum('amount');
-        $totalTraderDollar = Transfer::where('person_type', 'trader')->sum('dollar_rate');
+        $totalTraderDollar = Transfer::where('person_type', 'trader')->sum('dollar_value');
 
         return view('livewire.transfers.list-transfers', [
             'transfers' => Transfer::paginate(10),
