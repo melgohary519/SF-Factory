@@ -29,8 +29,8 @@
                     <td>{{ $invoice->goods_type }}</td>
                     <td>{{ $invoice->weight }}</td>
                     <td>{{ $invoice->sale_date }}</td>
-                    <td>{{ $invoice->purchase_price }}</td>
-                    <td>{{ $invoice->dollar_value }} $</td>
+                    <td>{{ number_format($invoice->sale_price,2,'.',',')  }}</td>
+                    <td>{{ number_format($invoice->dollar_value,2,'.',',')  }} $</td>
                     <td> <a href="#">click here</a> </td>
                     <td> <a href="#">click here</a> </td>
                 </tr>

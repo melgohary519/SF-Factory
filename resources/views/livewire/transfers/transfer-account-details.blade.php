@@ -43,17 +43,17 @@
 
                     <tr>
                         <th>موردين</th>
-                        <td style="background-color: #530C7F !important;">{{$totalSupplierTransferIraqy}}</td>
-                        <td style="background-color: #530C7F !important;">$ {{$totalSupplierTransferDolary}}</td>
-                        <td style="background-color: #530C7F !important;">{{$totalSupplierRestIraqy}}</td>
-                        <td style="background-color: #530C7F !important;">$ {{$totalSupplierResyDolary}}</td>
+                        <td style="background-color: #530C7F !important;">{{ number_format($totalSupplierTransferIraqy,2,'.',',') }}</td>
+                        <td style="background-color: #530C7F !important;">$ {{ number_format($totalSupplierTransferDolary,2,'.',',') }}</td>
+                        <td style="background-color: #530C7F !important;">{{ number_format($totalSupplierRestIraqy,2,'.',',') }}</td>
+                        <td style="background-color: #530C7F !important;">$ {{ number_format($totalSupplierResyDolary,2,'.',',') }}</td>
                     </tr>
                     <tr>
                         <th>تجار </th>
-                        <td style="background-color: #530C7F !important;">{{$totalTraderTransferIraqy}}</td>
-                        <td style="background-color: #530C7F !important;">$ {{$totalTraderTransferDolary}}</td>
-                        <td style="background-color: #530C7F !important;">{{$totalTraderRestIraqy}}</td>
-                        <td style="background-color: #530C7F !important;">$ {{$totalTraderResyDolary}}</td>
+                        <td style="background-color: #530C7F !important;">{{ number_format($totalTraderTransferIraqy,2,'.',',') }}</td>
+                        <td style="background-color: #530C7F !important;">$ {{ number_format($totalTraderTransferDolary,2,'.',',') }}</td>
+                        <td style="background-color: #530C7F !important;">{{ number_format($totalTraderRestIraqy,2,'.',',') }}</td>
+                        <td style="background-color: #530C7F !important;">$ {{ number_format($totalTraderResyDolary,2,'.',',') }}</td>
                     </tr>
                 </tbody>
             @else
@@ -68,18 +68,18 @@
 
                 <tr>
                     <th>السعر</th>
-                    <td style="background-color: #530C7F !important;">{{$priceIraqy}}</td>
-                    <td style="background-color: #530C7F !important;">$ {{$priceDollary}}</td>
+                    <td style="background-color: #530C7F !important;">{{number_format($priceIraqy,2,'.',',') }}</td>
+                    <td style="background-color: #530C7F !important;">$ {{number_format($priceDollary,2,'.',',') }}</td>
                 </tr>
                 <tr>
                     <th>المبلغ المحول</th>
-                    <td style="background-color: #530C7F !important;">{{$transferIraqy}}</td>
-                    <td style="background-color: #530C7F !important;">$ {{$transferDollary}}</td>
+                    <td style="background-color: #530C7F !important;">{{number_format($transferIraqy,2,'.',',') }}</td>
+                    <td style="background-color: #530C7F !important;">$ {{number_format($transferDollary,2,'.',',') }}</td>
                 </tr>
                 <tr>
                     <th>الباقي</th>
-                    <td style="background-color: #530C7F !important;">{{$restIraqy }}</td>
-                    <td style="background-color: #530C7F !important;">$ {{$restDollary }}</td>
+                    <td style="background-color: #530C7F !important;">{{number_format($restIraqy,2,'.',',')  }}</td>
+                    <td style="background-color: #530C7F !important;">$ {{number_format($restDollary,2,'.',',')  }}</td>
                 </tr>
 
             </tbody>

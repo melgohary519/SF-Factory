@@ -30,8 +30,8 @@
                     <td>{{ $transfer->person_name }}</td>
                     <td>{{ $transfer->person_type == "supplier" ? "مورد" : "تاجر" }}</td>
                     <td>{{ $transfer->transfer_date }}</td>
-                    <td>{{ $transfer->amount }}</td>
-                    <td>{{ $transfer->dollar_value }} $</td>
+                    <td>{{ number_format($transfer->amount,2,'.',',')  }}</td>
+                    <td>{{  number_format($transfer->dollar_value,2,'.',',')  }} $</td>
                     <td> <a href="#">click here</a> </td>
                     <td> <a href="#">click here</a> </td>
                 </tr>
@@ -63,10 +63,10 @@
             </thead>
             <tbody>
                 <tr>
-                    <td>{{ $totalSupplierIraqi }}</td>
-                    <td>{{ $totalSupplierDollar }}</td>
-                    <td>{{ $totalTraderIraqi }}</td>
-                    <td>{{ $totalTraderDollar }}</td>
+                    <td>{{number_format($totalSupplierIraqi,2,'.',',')  }}</td>
+                    <td>{{number_format($totalSupplierDollar,2,'.',',')  }}</td>
+                    <td>{{number_format($totalTraderIraqi,2,'.',',')  }}</td>
+                    <td>{{number_format($totalTraderDollar,2,'.',',')  }}</td>
                 </tr>
             </tbody>
         </table>

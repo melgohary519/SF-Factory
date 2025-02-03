@@ -40,8 +40,8 @@
                     <td>{{ $item->purchase_date }}</td>
                     <td>{{ $item->supplier_name }}</td>
                     <td>{{ $item->partner_name }}</td>
-                    <td>{{ $item->purchase_price }}</td>
-                    <td>{{ $item->dollar_rate }} $</td>
+                    <td>{{  number_format($item->purchase_price,2,'.',',') }}</td>
+                    <td>{{ number_format($item->dollar_rate,2,'.',',') }} $</td>
                 </tr>
                 @endforeach
 
@@ -67,12 +67,12 @@
 
         <div class="row text-center">
             <span class="col-3 align-content-center color-white bg4">  السعر العراقي</span>
-            <div class="col text-end bg1">{{ $totalPurchasePrice }}</div>
+            <div class="col text-end bg1">{{ number_format($totalPurchasePrice,2,'.',',') }}</div>
         </div>
 
         <div class="row text-center">
             <span class="col-3 align-content-center color-white bg4">  السعر بالدولار</span>
-            <div class="col text-end bg1">{{ $totalDollarValue }} $</div>
+            <div class="col text-end bg1">{{ number_format($totalDollarValue,2,'.',',') }} $</div>
         </div>
     </div>
 

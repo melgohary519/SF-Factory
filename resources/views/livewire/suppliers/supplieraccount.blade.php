@@ -29,8 +29,8 @@
                 <td>{{ $invoice->goods_type }}</td>
                 <td>{{ $invoice->weight }}</td>
                 <td>{{ $invoice->created_at->format("Y-m-d") }}</td>
-                <td>{{ $invoice->purchase_price }}</td>
-                <td>{{ $invoice->dollar_value }} $</td>
+                <td>{{number_format($invoice->purchase_price,2,'.',',')  }}</td>
+                <td>{{number_format($invoice->dollar_value,2,'.',',')  }} $</td>
                 <td> <a href="#">click here</a> </td>
                 <td> <a href="#">click here</a> </td>
             </tr>
@@ -70,8 +70,8 @@
             </thead>
             <tbody>
                 <tr>
-                    <td>{{ $totalCashIraqy }}</td>
-                    <td>{{ $totalCashDollar }}</td>
+                    <td>{{ number_format($totalCashIraqy,2,'.',',')  }}</td>
+                    <td>{{ number_format($totalCashDollar,2,'.',',')  }}</td>
                     <td>0</td>
                     <td>0</td>
                     <td>0</td>
