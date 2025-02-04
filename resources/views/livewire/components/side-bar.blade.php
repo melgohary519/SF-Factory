@@ -191,7 +191,7 @@
                 {{-- <i class="bi bi-wallet-fill"></i> --}}
                 الصرفيات
             </a>
-            <a class="nav-link" href="#profits">
+            <a class="nav-link" href="{{route('profitlosses.page')}}">
                 {{-- <i class="bi bi-bar-chart-fill"></i> --}}
                 الارباح
             </a>

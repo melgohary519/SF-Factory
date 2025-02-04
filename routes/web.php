@@ -2,6 +2,15 @@
 
 use App\Http\Controllers\PrintInvoice as ControllersPrintInvoice;
 use App\Livewire\Print\PrintInvoice;
+use App\Livewire\ProfitsLosses\MaterialReportPage;
+use App\Livewire\ProfitsLosses\ProfitLossPage;
+use App\Livewire\ProfitsLosses\ProfitReportPage;
+use App\Livewire\ProfitsLosses\SuplierAndTraderAccountPage;
+use App\Livewire\ProfitsLosses\SuplierAndTraderProfitPage;
+use App\Livewire\ProfitsLosses\SupplierAccountPage;
+use App\Livewire\ProfitsLosses\SupplierProfitPage;
+use App\Livewire\ProfitsLosses\TraderAccountPage;
+use App\Livewire\ProfitsLosses\TraderProfitPage;
 use App\Livewire\Transfers\ListTransfers;
 use App\Livewire\Transfers\AddTransfer;
 use App\Livewire\Transfers\TransferAccountDetails;
@@ -48,6 +57,12 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/users/list', \App\Livewire\Users\ListUsers::class)->name('users.list');
     Route::get('/users/add', \App\Livewire\Users\AddUser::class)->name('users.add');
     Route::get('/users/account/{user_id}', \App\Livewire\Users\UserِAccount::class)->name('users.account');
+
+    Route::get('/profits-losses', ProfitLossPage::class)->name('profitlosses.page');
+    Route::get('/profit/{type}', SuplierAndTraderProfitPage::class)->name('profitlosses.supplierandtrader.profit');
+    Route::get('/account/{type}', SuplierAndTraderAccountPage::class)->name('profitlosses.supplierandtrader.account');
+    Route::get('/material-report', MaterialReportPage::class)->name('profitlosses.material.report');
+    Route::get('/profit-report', ProfitReportPage::class)->name('profitlosses.profit.report');
 });
 
 Route::get('/test', function () {
