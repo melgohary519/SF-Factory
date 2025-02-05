@@ -68,7 +68,6 @@ class TransferAccountDetails extends Component
 
     function updated($name, $value)
     {
-        \Log::info($name);
         $this->reloadData();
     }
 

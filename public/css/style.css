@@ -131,3 +131,18 @@ body{
 .totals ,.totals th{
     background-color: #0d8b0d !important;
 }
+
+
+
+.highlight {
+    background-color: #530C7F !important;
+}
+.containerGrroup .row{
+    border-bottom: 1px solid #530C7F;
+    padding: 5px;
+}
+.containerGrroup .col-4{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
