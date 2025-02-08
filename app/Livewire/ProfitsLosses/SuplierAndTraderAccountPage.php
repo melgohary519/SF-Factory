@@ -12,7 +12,7 @@ class SuplierAndTraderAccountPage extends Component
     public $type;
     public $pageTitle;
     public $select_options;
-    public $items;
+    // public $items;
     public $fromDate;
     public $toDate;
     public $selectedProduct;
@@ -56,18 +56,14 @@ class SuplierAndTraderAccountPage extends Component
 
     public function reloadData()
     {
-        $itemName = "%";
-        if (Item::find($this->selectedProduct) != null) {
-            $itemName = Item::find($this->selectedProduct)->goods_type;
-        }
-
+        
         if ($this->type == "supplier") {
 
         } elseif ($this->type == "trader") {
             $trader = Trader::find($this->selectedPersonId);
             if ($trader) {
-                $this->priceIraqy = $trader->invoices()->where("goods_type","like",$itemName)->whereBetween('sale_date', [$this->fromDate, $this->toDate])->sum("sale_price");
-                $this->priceDollary = $trader->invoices()->where("goods_type","like",$itemName)->whereBetween('sale_date', [$this->fromDate, $this->toDate])->sum("dollar_value");
+                $this->priceIraqy = $trader->invoices()->whereBetween('sale_date', [$this->fromDate, $this->toDate])->sum("sale_price");
+                $this->priceDollary = $trader->invoices()->whereBetween('sale_date', [$this->fromDate, $this->toDate])->sum("dollar_value");
                 $this->transferIraqy = $trader->transfers()->whereBetween('transfer_date', [$this->fromDate, $this->toDate])->sum("amount");
                 $this->transferDollary = $trader->transfers()->whereBetween('transfer_date', [$this->fromDate, $this->toDate])->sum("dollar_value");
                 $this->restIraqy = $this->priceIraqy - $this->transferIraqy;

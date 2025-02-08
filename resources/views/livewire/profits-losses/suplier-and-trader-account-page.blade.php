@@ -24,20 +24,6 @@
             <input type="date" wire:model.live="toDate" class="col form-control p-0 m-2" id="toDate"
                 placeholder="الي تاريخ">
 
-            <label for="selectedProduct" class="ms- d-flex align-items-center col form-label p-0 m-0">نوع البضاعة
-            </label>
-            <select wire:model.live="selectedProduct"
-                class="highlight m-2 text-center col align-content-center bg6 form-select form-select-lg border-0 text-end color-white">
-                <option value="">اختر البضاعة</option>
-                @foreach ($items as $item)
-                    <option value="{{ $item->id }}">
-                        {{ $item->goods_type }}
-                    </option>
-                @endforeach
-            </select>
-
-
-
         </form>
 
         <div class="containerGrroup mt-5">
