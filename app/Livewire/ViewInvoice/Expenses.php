@@ -13,6 +13,7 @@ class Expenses extends Component
     }
     public function render()
     {
+        session()->flash("page_name", "فواتير الحوالات");
         return view('livewire.view-invoice.expenses');
     }
 }

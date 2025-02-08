@@ -13,6 +13,7 @@ class Purchase extends Component
     }
     public function render()
     {
+        session()->flash("page_name", "فواتير الشراء");
         return view('livewire.view-invoice.purchase');
     }
 }

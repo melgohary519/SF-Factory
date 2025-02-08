@@ -13,6 +13,7 @@ class Transfers extends Component
     }
     public function render()
     {
+        session()->flash("page_name", "فواتير الصرفيات");
         return view('livewire.view-invoice.transfers');
     }
 }

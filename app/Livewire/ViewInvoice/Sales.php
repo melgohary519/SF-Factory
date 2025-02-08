@@ -13,6 +13,7 @@ class Sales extends Component
     }
     public function render()
     {
+        session()->flash("page_name", "فواتير البيع");
         return view('livewire.view-invoice.sales');
     }
 }
