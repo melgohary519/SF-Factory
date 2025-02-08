@@ -58,10 +58,27 @@ class SuplierAndTraderAccountPage extends Component
     {
         
         if ($this->type == "supplier") {
-
+            $supplier = Supplier::find($this->selectedPersonId);
+            if ($supplier) {
+                $this->itemsQuantity = $supplier->invoices()->whereBetween('purchase_date', [$this->fromDate, $this->toDate])->sum("weight");
+                $this->priceIraqy = $supplier->invoices()->whereBetween('purchase_date', [$this->fromDate, $this->toDate])->sum("purchase_price");
+                $this->priceDollary = $supplier->invoices()->whereBetween('purchase_date', [$this->fromDate, $this->toDate])->sum("dollar_value");
+                $this->transferIraqy = $supplier->transfers()->whereBetween('transfer_date', [$this->fromDate, $this->toDate])->sum("amount");
+                $this->transferDollary = $supplier->transfers()->whereBetween('transfer_date', [$this->fromDate, $this->toDate])->sum("dollar_value");
+                $this->restIraqy = $this->priceIraqy - $this->transferIraqy;
+                $this->restDollary = $this->priceDollary - $this->transferDollary;
+            } else {
+                $this->priceIraqy = 0;
+                $this->priceDollary = 0;
+                $this->transferIraqy = 0;
+                $this->transferDollary = 0;
+                $this->restIraqy = 0;
+                $this->restDollary = 0;
+            }
         } elseif ($this->type == "trader") {
             $trader = Trader::find($this->selectedPersonId);
             if ($trader) {
+                $this->itemsQuantity = $trader->invoices()->whereBetween('sale_date', [$this->fromDate, $this->toDate])->sum("weight");
                 $this->priceIraqy = $trader->invoices()->whereBetween('sale_date', [$this->fromDate, $this->toDate])->sum("sale_price");
                 $this->priceDollary = $trader->invoices()->whereBetween('sale_date', [$this->fromDate, $this->toDate])->sum("dollar_value");
                 $this->transferIraqy = $trader->transfers()->whereBetween('transfer_date', [$this->fromDate, $this->toDate])->sum("amount");
@@ -76,8 +93,6 @@ class SuplierAndTraderAccountPage extends Component
                 $this->restIraqy = 0;
                 $this->restDollary = 0;
             }
-
-
         }
     }
 }

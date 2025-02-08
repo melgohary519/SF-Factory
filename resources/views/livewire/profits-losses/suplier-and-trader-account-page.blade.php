@@ -29,7 +29,7 @@
         <div class="containerGrroup mt-5">
             <div class="row">
                 <div class="col-4">كمية المواد</div>
-                <div class="col highlight">0</div>
+                <div class="col highlight">{{$itemsQuantity}}</div>
             </div>
             <div class="row">
                 <div class="col-4">سعر عراقي</div>
