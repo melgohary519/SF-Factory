@@ -15,6 +15,10 @@ use App\Livewire\Transfers\ListTransfers;
 use App\Livewire\Transfers\AddTransfer;
 use App\Livewire\Transfers\TransferAccountDetails;
 use App\Livewire\Transfers\TransferAccountPage;
+use App\Livewire\ViewInvoice\Expenses;
+use App\Livewire\ViewInvoice\Purchase;
+use App\Livewire\ViewInvoice\Sales;
+use App\Livewire\ViewInvoice\Transfers;
 use App\Models\Supplier;
 use Illuminate\Support\Facades\Route;
 
@@ -63,6 +67,12 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/account/{type}', SuplierAndTraderAccountPage::class)->name('profitlosses.supplierandtrader.account');
     Route::get('/material-report', MaterialReportPage::class)->name('profitlosses.material.report');
     Route::get('/profit-report', ProfitReportPage::class)->name('profitlosses.profit.report');
+
+    // view incoices
+    Route::get('/invoices/purchase/{invoice}', Purchase::class)->name('view.invoices.purchase');
+    Route::get('/invoices/sales/{invoice}', Sales::class)->name('view.invoices.sales');
+    Route::get('/invoices/trensfer/{invoice}', Transfers::class)->name('view.invoices.transfer');
+    Route::get('/invoices/expenses/{invoice}', Expenses::class)->name('view.invoices.expenses');
 });
 
 Route::get('/test', function () {

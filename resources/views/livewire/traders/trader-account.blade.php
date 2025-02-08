@@ -31,7 +31,7 @@
                     <td>{{ $invoice->sale_date }}</td>
                     <td>{{ number_format($invoice->sale_price,2,'.',',')  }}</td>
                     <td>{{ number_format($invoice->dollar_value,2,'.',',')  }} $</td>
-                    <td> <a href="#">click here</a> </td>
+                    <td> <a href="{{route('view.invoices.sales',[$invoice->id])}}">click here</a> </td>
                     <td> <a href="#">click here</a> </td>
                 </tr>
                 @endforeach
