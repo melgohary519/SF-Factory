@@ -146,3 +146,41 @@ body{
     justify-content: center;
     align-items: center;
 }
+
+
+.print-invoice{
+    width: 8.3in;
+    height: 11.7in;
+    background: white !important;
+    margin: auto;
+}
+.print-invoice h1{
+    color: red;
+    font-size: 55px;
+}
+.print-invoice table{
+    color: black;
+}
+.print-invoice .sideName{
+    color: black;
+    border: 1px solid black;
+    font-size: 25px;
+
+}
+.print-invoice .invoice-details thead tr th{
+    color: white ;
+    background: red;
+}
+.print-invoice .total *{
+    color: black;
+} 
+.print-invoice .total div{
+    display: flex;
+}
+.print-invoice .total{
+    font-size: 40px;
+}
+.print-invoice .footer {
+    background: red;
+    font-size: 17px;
+}

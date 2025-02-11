@@ -56,7 +56,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/transfers/account', TransferAccountPage::class)->name('transfers.account');
     Route::get('/transfers/account/details/{type}', TransferAccountDetails::class)->name('transfers.account.details');
 
-    Route::get('/print/{type}/{id}', PrintInvoice::class)->name('print.invoice');
 
     Route::get('/users/list', \App\Livewire\Users\ListUsers::class)->name('users.list');
     Route::get('/users/add', \App\Livewire\Users\AddUser::class)->name('users.add');
@@ -73,6 +72,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/invoices/sales/{invoice}', Sales::class)->name('view.invoices.sales');
     Route::get('/invoices/trensfer/{invoice}', Transfers::class)->name('view.invoices.transfer');
     Route::get('/invoices/expenses/{invoice}', Expenses::class)->name('view.invoices.expenses');
+
+    // print invoices
+    Route::get('/print/invoices/purchase/{invoice}', \App\Livewire\PrintInvoice\Purchase::class)->name('print.invoices.purchase');
 });
 
 Route::get('/test', function () {
