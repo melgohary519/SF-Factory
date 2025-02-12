@@ -33,7 +33,7 @@
                 <tr>
                     <th>SL.</th>
                     <th>اسم المادة</th>
-                    <th>السعر</th>
+                    <th>سعر الطن بالدولار</th>
                     <th>الوزن</th>
                     <th>اجمالي</th>
                 </tr>
@@ -42,7 +42,7 @@
                 <tr>
                     <td>1</td>
                     <td>{{ $invoice->goods_type }}</td>
-                    <td>$ {{ $invoice->dollar_value }}</td>
+                    <td>$ {{ $invoice->dollar_rate / $invoice->weight }}</td>
                     <td>{{ $invoice->weight }}</td>
                     <td>$ {{ $invoice->dollar_rate }} </td>
                 </tr>
@@ -58,9 +58,10 @@
             <div class="d-flex flex-column text-start">
                 <h2 class="me-3 p-4">{{ $invoice->dollar_rate }} $</h2>
                 <h2 class="me-3 p-4">{{ $invoice->shipping_invoices()->sum('shipping_dollar_rate') }} $</h2>
-                <h2 class="me-3 p-4">{{ $invoice->dollar_rate + $invoice->shipping_dollar_rate }} $</h2>
+                <h2 class="me-3 p-4">{{ $invoice->dollar_rate + $invoice->shipping_invoices()->sum('shipping_dollar_rate') }} $</h2>
             </div>
         </div>
+        <div class="bookmarks"></div>
     </div>
 
     <div class="footer w-100 position-absolute bottom-0 d-flex justify-content-between mt-5 p-3" >
@@ -71,6 +72,8 @@
             +964 750 178 7725 - +964 782 387 97696
         </div>
     </div>
+
+    
 
 
 </div>
