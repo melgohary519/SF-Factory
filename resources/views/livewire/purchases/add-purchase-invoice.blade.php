@@ -75,6 +75,14 @@
                 <div class="bg-warning p-2 text-danger">{{ $message }}</div>
             @enderror
         </div>
+
+        <div class="col mb-3 text-center">
+            <label for="inventoryNameInput" class="form-label">اسم المخزن</label>
+            <input type="text" class="form-control" id="inventoryNameInput" wire:model="inventoryName">
+            @error('inventoryName') 
+                <div class="bg-warning p-2 text-danger">{{ $message }}</div>
+            @enderror
+        </div>
         
         <div class="col mb-3 text-center">
             <label for="tonPriceInput" class="form-label">سعر الطن</label>
@@ -83,6 +91,14 @@
                 <div class="bg-warning p-2 text-danger">{{ $message }}</div>
             @enderror
         </div>
+        
+        
+        
+        
+        
+    </div>
+    
+    <div class="row">
         <div class="col mb-3 text-center">
             <label for="purchasePriceInput" class="form-label">سعر الشراء </label>
             <input type="number" class="form-control" id="purchasePriceInput" wire:model.live="purchasePrice" readonly>
@@ -90,14 +106,6 @@
                 <div class="bg-warning p-2 text-danger">{{ $message }}</div>
             @enderror
         </div>
-
-
-
-
-
-    </div>
-
-    <div class="row">
         <div class="col mb-3 text-center">
             <label for="dollarRateInput" class="form-label">قيمة الدولار عند الشراء</label>
             <input type="number" class="form-control" id="dollarRateInput" wire:model.live="dollarRate">

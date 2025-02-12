@@ -14,6 +14,7 @@ class AddPurchaseInvoice extends Component
     public $goodsType;
     public $purchaseDate;
     public $partnerName;
+    public $inventoryName;
     public $supplier;
     public $supplierName;
     public $paymentType;
@@ -43,6 +44,7 @@ class AddPurchaseInvoice extends Component
             'goodsType' => 'required|string',
             'purchaseDate' => 'required|date',
             'partnerName' => 'required|string',
+            'inventoryName' => 'required|string',
             'supplierName' => 'required|string',
             'paymentType' => 'required|string',
             'purchasePrice' => 'required|numeric',
@@ -57,6 +59,8 @@ class AddPurchaseInvoice extends Component
             'goodsType.required' => 'نوع البضاعة مطلوب',
             'purchaseDate.required' => 'تاريخ الشراء مطلوب',
             'partnerName.required' => 'اسم الشريك مطلوب',
+            'inventoryName.required' => 'اسم المخزن مطلوب',
+            'inventoryName.string' => 'اسم المخزن يجب أن يكون نص',
             'supplierName.required' => 'اسم المورد مطلوب',
             'paymentType.required' => 'نوع الدفع مطلوب',
             'purchasePrice.required' => 'سعر الشراء مطلوب',
@@ -73,6 +77,7 @@ class AddPurchaseInvoice extends Component
             'goods_type' => $goodsType->goods_type,
             'purchase_date' => $this->purchaseDate,
             'partner_name' => $this->partnerName,
+            'inventory_name' => $this->inventoryName,
             'supplier_id' => $this->supplier,
             'supplier_name' => $this->supplierName,
             'payment_type' => $this->paymentType,

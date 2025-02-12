@@ -20,6 +20,7 @@ class PurchaseInvoice extends Model
         'dollar_rate',
         'dollar_value',
         'ton_price',
+        'inventory_name',
     ];
 
 

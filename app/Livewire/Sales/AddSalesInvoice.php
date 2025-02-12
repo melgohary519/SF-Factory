@@ -15,6 +15,7 @@ class AddSalesInvoice extends Component
     public $goodsType;
     public $saleDate;
     public $partnerName;
+    public $inventoryName;
     public $trader;
     public $traderName;
     public $paymentType;
@@ -42,6 +43,7 @@ class AddSalesInvoice extends Component
             'goodsType' => 'required|string',
             'saleDate' => 'required|date',
             'partnerName' => 'required|string',
+            'inventoryName' => 'required|string',
             'traderName' => 'required|string',
             'paymentType' => 'required|string',
             'salePrice' => 'required|numeric',
@@ -57,6 +59,8 @@ class AddSalesInvoice extends Component
             'saleDate.date' => 'تاريخ البيع غير صالح',
             'partnerName.required' => 'اسم الشريك مطلوب',
             'partnerName.string' => 'اسم الشريك يجب أن يكون نص',
+            'inventoryName.required' => 'اسم المخزن مطلوب',
+            'inventoryName.string' => 'اسم المخزن يجب أن يكون نص',
             'traderName.required' => 'اسم التاجر مطلوب',
             'traderName.string' => 'اسم التاجر يجب أن يكون نص',
             'paymentType.required' => 'نوع الدفع مطلوب',
@@ -79,6 +83,7 @@ class AddSalesInvoice extends Component
             'goods_type' =>  $goodsType->goods_type,
             'sale_date' => $this->saleDate,
             'partner_name' => $this->partnerName,
+            'inventory_name' => $this->inventoryName,
             'trader_id' => $this->trader,
             'trader_name' => $this->traderName,
             'payment_type' => $this->paymentType,
