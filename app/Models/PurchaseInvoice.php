@@ -21,4 +21,10 @@ class PurchaseInvoice extends Model
         'dollar_value',
         'ton_price',
     ];
+
+
+    public function shipping_invoices()
+    {
+        return ShippingInvoice::where('invoice_number', $this->id)->where('type','purchase')->get();
+    }
 }

@@ -13,6 +13,13 @@ return new class extends Migration
     {
         Schema::create('shipping_invoices', function (Blueprint $table) {
             $table->id();
+            $table->string('type');
+            $table->bigInteger('invoice_number');
+            $table->decimal('shipping_fee', 10, 2);
+            $table->decimal('shipping_dollar_rate', 10, 2);
+            $table->decimal('shipping_dollar_value', 10, 2);
+            $table->string('car_owner_name');
+            $table->string('car_type');
             $table->timestamps();
         });
     }

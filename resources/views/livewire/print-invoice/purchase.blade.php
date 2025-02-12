@@ -48,20 +48,17 @@
                 </tr>
             </tbody>
         </table>
-    
-    
-        <div class="total mt-5">
-            <div class="">
-                <h2 class="w-50 me-3 p-4 bg-body">المجموع : </h2>
-                <h2 class="w-50 text-center p-4 ">$ {{ $invoice->dollar_rate }}</h2>
+        
+        <div class="total mt-5 d-flex">
+            <div class="d-flex flex-column">
+                <h2 class="me-3 p-4 bg-body">المجموع : </h2>
+                <h2 class="me-3 p-4 bg-body">أجور الشحن : </h2>
+                <h2 class="me-3 p-4 bg-body">الحساب : </h2>
             </div>
-            <div class="mt-3 ">
-                <h2 class="w-50 me-3 p-4 bg-body">أجور الشحن : </h2>
-                <h2 class="w-50 text-center p-4 ">$ {{ $invoice->shipping_dollar_rate }}</h2>
-            </div>
-            <div class="mt-3">
-                <h2 class="w-50 me-3 p-4 bg-body"> الحساب : </h2>
-                <h2 class="w-50 p-4 ">$ {{ $invoice->dollar_rate + $invoice->shipping_dollar_rate }}</h2>
+            <div class="d-flex flex-column text-start">
+                <h2 class="me-3 p-4">{{ $invoice->dollar_rate }} $</h2>
+                <h2 class="me-3 p-4">{{ $invoice->shipping_invoices()->sum('shipping_dollar_rate') }} $</h2>
+                <h2 class="me-3 p-4">{{ $invoice->dollar_rate + $invoice->shipping_dollar_rate }} $</h2>
             </div>
         </div>
     </div>
