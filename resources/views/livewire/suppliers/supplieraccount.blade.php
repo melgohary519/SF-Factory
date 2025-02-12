@@ -19,7 +19,6 @@
                 <th scope="col">المبلغ بالعراقي</th>
                 <th scope="col">المبلغ بالدولار</th>
                 <th scope="col">عرض الفاتورة</th>
-                <th scope="col">طباعة </th>
                 </tr>
             </thead>
             <tbody>
@@ -32,7 +31,6 @@
                 <td>{{number_format($invoice->purchase_price,2,'.',',')  }}</td>
                 <td>{{number_format($invoice->dollar_rate,2,'.',',')  }} $</td>
                 <td> <a href="{{route('view.invoices.purchase',[$invoice->id])}}">click here</a> </td>
-                <td> <a href="{{route('print.invoices.purchase',[$invoice->id])}}">click here</a> </td>
             </tr>
                 @endforeach
 
