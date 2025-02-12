@@ -73,6 +73,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/invoices/trensfer/{invoice}', Transfers::class)->name('view.invoices.transfer');
     Route::get('/invoices/expenses/{invoice}', Expenses::class)->name('view.invoices.expenses');
 
+    Route::get('/shipping', \App\Livewire\Shipping\ShippingInvoice::class)->name('shipping.add');
+
     // print invoices
     Route::get('/print/invoices/purchase/{invoice}', \App\Livewire\PrintInvoice\Purchase::class)->name('print.invoices.purchase');
 });
