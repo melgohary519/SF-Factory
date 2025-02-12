@@ -19,11 +19,6 @@ class SalesInvoice extends Model
         'sale_price',
         'dollar_rate',
         'dollar_value',
-        'shipping_fee',
-        'shipping_dollar_rate',
-        'shipping_dollar_value',
-        'car_owner_name',
-        'car_type',
         'ton_price',
     ];
 

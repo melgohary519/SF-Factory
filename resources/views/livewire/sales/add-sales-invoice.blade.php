@@ -65,60 +65,19 @@
         </div>
         
     </div>
-    <div class="row">
-        <div class="row">
-            <div class="col mb-3 text-center">
-                <label for="partnerNameInput" class="form-label">اسم الشريك</label>
-                <input type="text" class="form-control" id="partnerNameInput" wire:model="partnerName">
-                @error('partnerName') 
-                    <div class="bg-warning p-2 text-danger">{{ $message }}</div>
-                @enderror
-            </div>
-            <div class="col mb-3 text-center">
-                <label for="carOwnerNameInput" class="form-label">اسم صاحب السيارة</label>
-                <input type="text" class="form-control" id="carOwnerNameInput" wire:model="car_owner_name">
-                @error('car_owner_name') 
-                    <div class="bg-warning p-2 text-danger">{{ $message }}</div>
-                @enderror
-            </div>
-            <div class="col mb-3 text-center">
-                <label for="carTypeInput" class="form-label">نوع السيارة</label>
-                <input type="text" class="form-control" id="carTypeInput" wire:model="car_type">
-                @error('car_type') 
-                    <div class="bg-warning p-2 text-danger">{{ $message }}</div>
-                @enderror
-            </div>
-           
-        </div>
-    
-    </div>
 
-    <div class="row">
-        <div class="col mb-3 text-center">
-            <label for="shippingFeeInput" class="form-label">تكلفة الشحن</label>
-            <input type="number" class="form-control" id="shippingFeeInput" wire:model.live="shipping_fee">
-            @error('shipping_fee') 
-                <div class="bg-warning p-2 text-danger">{{ $message }}</div>
-            @enderror
-        </div>
-        <div class="col mb-3 text-center">
-            <label for="shippingDollarRateInput" class="form-label">قيمة دولار الشحن</label>
-            <input type="number" class="form-control" id="shippingDollarRateInput" wire:model.live="shipping_dollar_rate">
-            @error('shipping_dollar_rate') 
-                <div class="bg-warning p-2 text-danger">{{ $message }}</div>
-            @enderror
-        </div>
-        <div class="col mb-3 text-center">
-            <label for="shippingDollarValueInput" class="form-label">سعر دولار الشحن</label>
-            <input type="number" class="form-control" readonly id="shippingDollarValueInput" wire:model="shipping_dollar_value">
-            @error('shipping_dollar_value') 
-                <div class="bg-warning p-2 text-danger">{{ $message }}</div>
-            @enderror
-        </div>
-    </div>
 
 
     <div class="row">
+
+        <div class="col mb-3 text-center">
+            <label for="partnerNameInput" class="form-label">اسم الشريك</label>
+            <input type="text" class="form-control" id="partnerNameInput" wire:model="partnerName">
+            @error('partnerName') 
+                <div class="bg-warning p-2 text-danger">{{ $message }}</div>
+            @enderror
+        </div>
+
 
         <div class="col mb-3 text-center">
             <label for="tonPriceInput" class="form-label">سعر الطن</label>
@@ -136,6 +95,9 @@
             @enderror
         </div>
 
+        
+    </div>
+    <div class="row">
         <div class="col mb-3 text-center">
             <label for="dollarRateInput" class="form-label">قيمة الدولار عند البيع</label>
             <input type="number" class="form-control" id="dollarRateInput" wire:model.live="dollarRate">
@@ -143,8 +105,7 @@
                 <div class="bg-warning p-2 text-danger">{{ $message }}</div>
             @enderror
         </div>
-    </div>
-    <div class="row">
+        
         <div class="col mb-3 text-center">
             <label for="dollarValueInput" class="form-label">سعر الدولار</label>
             <input type="number" class="form-control" readonly id="dollarValueInput" wire:model.live="dollarValue">

@@ -20,13 +20,8 @@ class AddPurchaseInvoice extends Component
     public $purchasePrice;
     public $dollarRate;
     public $dollarValue;
-    public $shipping_dollar_value;
-    public $shipping_dollar_rate;
-    public $shipping_fee;
     public $supplierAddress;
     public $supplierPhone;
-    public $car_type;
-    public $car_owner_name;
     public $tonPrice;
 
 
@@ -53,13 +48,8 @@ class AddPurchaseInvoice extends Component
             'purchasePrice' => 'required|numeric',
             'dollarRate' => 'required|numeric',
             'dollarValue' => 'required|numeric',
-            'shipping_dollar_value' => 'required|numeric',
-            'shipping_dollar_rate' => 'required|numeric',
-            'shipping_fee' => 'required|numeric',
             'supplierAddress' => 'required|string',
             'supplierPhone' => 'required|string',
-            'car_type' => 'required|string',
-            'car_owner_name' => 'required|string',
             'tonPrice' => 'required|numeric',
 
         ], [
@@ -72,13 +62,8 @@ class AddPurchaseInvoice extends Component
             'purchasePrice.required' => 'سعر الشراء مطلوب',
             'dollarRate.required' => 'سعر الدولار مطلوب',
             'dollarValue.required' => 'قيمة الدولار مطلوبة',
-            'shipping_dollar_value.required' => 'قيمة دولار الشحن مطلوبة',
-            'shipping_dollar_rate.required' => 'سعر دولار الشحن مطلوبة',
-            'shipping_fee.required' => 'تكلفة الشحن مطلوبة',
             'supplierAddress.required' => 'عنوان المورد مطلوب',
             'supplierPhone.required' => 'رقم هاتف المورد مطلوب',
-            'car_type.required' => 'نوع السيارة مطلوب',
-            'car_owner_name.required' => 'اسم صاحب السيارة مطلوب',
             'tonPrice.required' => 'سعر الطن مطلوب',
         ]);
 
@@ -94,13 +79,8 @@ class AddPurchaseInvoice extends Component
             'purchase_price' => $this->purchasePrice,
             'dollar_rate' => $this->dollarRate,
             'dollar_value' => $this->dollarValue,
-            'shipping_dollar_value' => $this->shipping_dollar_value,
-            'shipping_dollar_rate' => $this->shipping_dollar_rate,
-            'shipping_fee' => $this->shipping_fee,
             'supplier_address' => $this->supplierAddress,
             'supplier_phone' => $this->supplierPhone,
-            'car_type' => $this->car_type,
-            'car_owner_name' => $this->car_owner_name,
             'ton_price' => $this->tonPrice,
         ]);
 
@@ -134,7 +114,7 @@ class AddPurchaseInvoice extends Component
     public function updated($name, $value)
     {
         \Log::info($name);
-        if ($name == 'tonPrice' || $name == 'weight' || $name == 'dollarRate' || $name == 'purchasePrice' || $name == 'shipping_fee' || $name == "shipping_dollar_rate") {
+        if ($name == 'tonPrice' || $name == 'weight' || $name == 'dollarRate' || $name == 'purchasePrice' ) {
             $this->updateDollarValue();
         }
         if($name == "supplier"){
@@ -161,12 +141,6 @@ class AddPurchaseInvoice extends Component
             $this->dollarValue = round($this->purchasePrice / $this->dollarRate, 2);
         } else {
             $this->dollarValue = 0;
-        }
-
-        if ($this->shipping_fee && $this->shipping_dollar_rate) {
-            $this->shipping_dollar_value = round($this->shipping_fee / $this->shipping_dollar_rate, 2);
-        } else {
-            $this->shipping_dollar_value = 0;
         }
     }
 

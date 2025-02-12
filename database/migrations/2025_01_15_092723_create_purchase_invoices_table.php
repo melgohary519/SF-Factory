@@ -27,13 +27,7 @@ return new class extends Migration
             $table->decimal('purchase_price', 10, 2);
             $table->decimal('dollar_rate', 10, 2);
             $table->decimal('dollar_value', 10, 2);
-
-            $table->decimal('shipping_fee', 10, 2);
-            $table->decimal('shipping_dollar_rate', 10, 2);
-            $table->decimal('shipping_dollar_value', 10, 2);
-
-            $table->string('car_owner_name');
-            $table->string('car_type');
+            
             $table->string('ton_price');
 
 
@@ -50,3 +44,5 @@ return new class extends Migration
         Schema::dropIfExists('purchase_invoices');
     }
 };
+
+

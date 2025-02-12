@@ -21,13 +21,8 @@ class AddSalesInvoice extends Component
     public $salePrice;
     public $dollarRate;
     public $dollarValue;
-    public $shipping_dollar_value;
-    public $shipping_dollar_rate;
-    public $shipping_fee;
     public $traderAddress;
     public $traderPhone;
-    public $car_type;
-    public $car_owner_name;
     public $tonPrice;
 
     public $traders;
@@ -52,13 +47,8 @@ class AddSalesInvoice extends Component
             'salePrice' => 'required|numeric',
             'dollarRate' => 'required|numeric',
             'dollarValue' => 'required|numeric',
-            'shipping_dollar_value' => 'required|numeric',
-            'shipping_dollar_rate' => 'required|numeric',
-            'shipping_fee' => 'required|numeric',
             'traderAddress' => 'required|string',
             'traderPhone' => 'required|string',
-            'car_type' => 'required|string',
-            'car_owner_name' => 'required|string',
             'tonPrice' => 'required|numeric',
         ], [
             'weight.required' => 'الوزن مطلوب',
@@ -76,13 +66,8 @@ class AddSalesInvoice extends Component
             'dollarRate.numeric' => 'سعر الدولار يجب أن يكون رقم',
             'dollarValue.required' => 'قيمة الدولار مطلوبة',
             'dollarValue.numeric' => 'قيمة الدولار يجب أن تكون رقم',
-            'shipping_dollar_value.required' => 'قيمة دولار الشحن مطلوبة',
-            'shipping_dollar_rate.required' => 'سعر دولار الشحن مطلوب',
-            'shipping_fee.required' => 'تكلفة الشحن مطلوبة',
             'traderAddress.required' => 'عنوان التاجر مطلوب',
             'traderPhone.required' => 'رقم هاتف التاجر مطلوب',
-            'car_type.required' => 'نوع السيارة مطلوب',
-            'car_owner_name.required' => 'اسم صاحب السيارة مطلوب',
             'tonPrice.required' => 'سعر الطن مطلوب',
         ]);
 
@@ -100,13 +85,8 @@ class AddSalesInvoice extends Component
             'sale_price' => $this->salePrice,
             'dollar_rate' => $this->dollarRate,
             'dollar_value' => $this->dollarValue,
-            'shipping_dollar_value' => $this->shipping_dollar_value,
-            'shipping_dollar_rate' => $this->shipping_dollar_rate,
-            'shipping_fee' => $this->shipping_fee,
             'trader_address' => $this->traderAddress,
             'trader_phone' => $this->traderPhone,
-            'car_type' => $this->car_type,
-            'car_owner_name' => $this->car_owner_name,
             'ton_price' => $this->tonPrice,
         ]);
         if ($this->paymentType == "cash") {
@@ -141,7 +121,7 @@ class AddSalesInvoice extends Component
 
     public function updated($name, $value)
     {
-        if ($name == 'tonPrice' || $name == 'weight' || $name == 'dollarRate' || $name == 'salePrice' || $name == 'shipping_fee' || $name == "shipping_dollar_rate") {
+        if ($name == 'tonPrice' || $name == 'weight' || $name == 'dollarRate' || $name == 'salePrice' ) {
             $this->updateDollarValue();
         }
         if($name == "trader"){
@@ -170,10 +150,6 @@ class AddSalesInvoice extends Component
             $this->dollarValue = 0;
         }
 
-        if ($this->shipping_fee && $this->shipping_dollar_rate) {
-            $this->shipping_dollar_value = round($this->shipping_fee / $this->shipping_dollar_rate, 2);
-        } else {
-            $this->shipping_dollar_value = 0;
-        }
+        
     }
 }
