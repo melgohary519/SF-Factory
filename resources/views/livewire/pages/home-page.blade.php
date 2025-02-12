@@ -2,69 +2,67 @@
     <div class="row mb-3 g-3">
 
         <div class="col">
-            <div>
-                <img src="{{ asset("images/icons/3.png") }}" class="img-thumbnail" alt="...">
+            <a style="all:inherit;cursor: pointer;" href="{{ route('expenses.add') }}">
+                <img src="{{ asset('images/icons/3.png') }}" class="img-thumbnail" alt="...">
                 <span>الصرفيات</span>
-            </div>
+            </a>
         </div>
 
-        
         <div class="col">
-            <div>
-                <img src="{{ asset("images/icons/1.png") }}" class="img-thumbnail" alt="...">
+            <a style="all:inherit;cursor: pointer;" href="{{ route('shipping.add') }}">
+                <img src="{{ asset('images/icons/1.png') }}" class="img-thumbnail" alt="...">
                 <span>فواتير الشحن</span>
-            </div>
+            </a>
         </div>
         <div class="col">
-            <div>
-                <img src="{{ asset("images/icons/6.png") }}" class="img-thumbnail" alt="...">
+            <a style="all:inherit;cursor: pointer;" href="{{ route('sales.invoice.add') }}">
+                <img src="{{ asset('images/icons/6.png') }}" class="img-thumbnail" alt="...">
                 <span>فواتير البيع</span>
-            </div>
+            </a>
         </div>
         <div class="col p-3">
-            <div>
-                <img src="{{ asset("images/icons/9.png") }}" class="img-thumbnail" alt="...">
+            <a style="all:inherit;cursor: pointer;" href="{{ route('purchase.invoice.add') }}">
+                <img src="{{ asset('images/icons/9.png') }}" class="img-thumbnail" alt="...">
                 <span>فواتير الشراء</span>
-            </div>
+            </a>
         </div>
-        
         
     </div>
 
     <div class="row mb-3">
         <div class="col">
-            <div>
+            <a style="all:inherit;cursor: pointer;" href="{{ route('transfers.list') }}">
+                <img src="{{ asset('images/icons/7.png') }}" class="img-thumbnail" alt="...">
                 <span>الحوالات</span>
-                <img src="{{ asset("images/icons/7.png") }}" class="img-thumbnail" alt="...">
-            </div>
+            </a>
         </div>
         <div class="col">
-            <div>
+            <a style="all:inherit;cursor: pointer;" href="{{ route('profitlosses.page') }}">
+                <img src="{{ asset('images/icons/5.png') }}" class="img-thumbnail" alt="...">
                 <span>الارباح</span>
-                <img src="{{ asset("images/icons/5.png") }}" class="img-thumbnail" alt="...">
-            </div>
+            </a>
         </div>
     </div>
 
     <div class="row mb-3">
         
         <div class="col">
-            <div class="d-flex flex-column align-items-center">
-                <img src="{{ asset("images/icons/2.png") }}" class="img-thumbnail" alt="...">
+            <a style="all:inherit;cursor: pointer;" href="{{ route('items.list') }}">
+                <img src="{{ asset('images/icons/2.png') }}" class="img-thumbnail" alt="...">
                 <span>المواد</span>
-            </div>
+            </a>
         </div>
         <div class="col">
-            <div class="d-flex flex-column align-items-center">
-                <img src="{{ asset("images/icons/4.png") }}" class="img-thumbnail" alt="...">
+            <a style="all:inherit;cursor: pointer;" href="{{ route('traders.add') }}">
+                <img src="{{ asset('images/icons/4.png') }}" class="img-thumbnail" alt="...">
                 <span>التجار</span>
-            </div>
+            </a>
         </div>
         <div class="col">
-            <div class="d-flex flex-column align-items-center">
-                <img src="{{ asset("images/icons/8.png") }}" class="img-thumbnail" alt="...">
+            <a style="all:inherit;cursor: pointer;" href="{{ route('suppliers.list') }}">
+                <img src="{{ asset('images/icons/8.png') }}" class="img-thumbnail" alt="...">
                 <span>الموردين</span>
-            </div>
+            </a>
         </div>
         
     </div>
