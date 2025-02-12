@@ -28,11 +28,16 @@ class AddSalesInvoice extends Component
 
     public $traders;
     public $items;
+
+    public $inventoryList;
+    public $partnerList;
     public function render()
     {
         session()->flash("page_name", "فاتورة بيع");
         $this->traders = Trader::all();
         $this->items = Item::all();
+        $this->inventoryList = Item::select('inventory_name')->groupBy('inventory_name')->get();
+        $this->partnerList = Item::select('partner_name')->groupBy('inventory_name')->get();
         return view('livewire.sales.add-sales-invoice');
     }
 

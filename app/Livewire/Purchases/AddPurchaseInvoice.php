@@ -29,11 +29,16 @@ class AddPurchaseInvoice extends Component
 
     public $suppliers;
     public $items;
+
+    public $inventoryList;
+    public $partnerList;
     public function render()
     {
         session()->flash("page_name", "فاتورة شراء");
         $this->suppliers = Supplier::all();
         $this->items = Item::all();
+        $this->inventoryList = Item::select('inventory_name')->groupBy('inventory_name')->get();
+        $this->partnerList = Item::select('partner_name')->groupBy('inventory_name')->get();
         return view('livewire.purchases.add-purchase-invoice');
     }
 

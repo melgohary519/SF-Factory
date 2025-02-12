@@ -72,7 +72,12 @@
 
         <div class="col mb-3 text-center">
             <label for="partnerNameInput" class="form-label">اسم الشريك</label>
-            <input type="text" class="form-control" id="partnerNameInput" wire:model="partnerName">
+            <select class="form-select form-select-lg bg4 text-end bg-transparent color-white" id="partnerNameSelect" wire:model="partnerName">
+                <option value="">اختار الشريك</option>
+                @foreach ($partnerList as $item)
+                    <option value="{{$item->partner_name}}">{{$item->partner_name}}</option>
+                @endforeach
+            </select>
             @error('partnerName') 
                 <div class="bg-warning p-2 text-danger">{{ $message }}</div>
             @enderror
@@ -80,7 +85,12 @@
 
         <div class="col mb-3 text-center">
             <label for="inventoryNameInput" class="form-label">اسم المخزن</label>
-            <input type="text" class="form-control" id="inventoryNameInput" wire:model="inventoryName">
+            <select class="form-select form-select-lg bg4 text-end bg-transparent color-white" id="inventoryNameSelect" wire:model="inventoryName">
+                <option value="">اختار المخزن</option>
+                @foreach ($inventoryList as $item)
+                    <option value="{{$item->inventory_name}}">{{$item->inventory_name}}</option>
+                @endforeach
+            </select>
             @error('inventoryName') 
                 <div class="bg-warning p-2 text-danger">{{ $message }}</div>
             @enderror
