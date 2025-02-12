@@ -4,7 +4,7 @@
         Save Your Time
       </div>
       <div dir="ltr">
-        @ 2024, made with 💜 by Visualize Team for a better solution
+        @ 2025, made with 💜 by Visualize Team for a better solution
       </div>
       <div>
         Save Your Money
