@@ -11,8 +11,10 @@ class Supplieraccount extends Component
     public $supplier_id;
     public $totalCashDollar = 0;
     public $totalCashIraqy = 0;
-    public $totalCreditDollar = 0;
-    public $totalCreditIraqy = 0;
+    public $totalTransferDollar = 0;
+    public $totalTransferIraqy = 0;
+    public $totalRestIraqy = 0;
+    public $totalRestDollary = 0;
 
     public function mount($supplier_id)
     {
@@ -22,11 +24,15 @@ class Supplieraccount extends Component
     {
         $supplier = Supplier::findOrFail($this->supplier_id);
 
-        $this->totalCashDollar = $supplier->invoices()->where("payment_type","=","cash")->sum("dollar_value");
-        $this->totalCashIraqy = $supplier->invoices()->where("payment_type","=","cash")->sum("purchase_price");
+        $this->totalCashDollar = $supplier->invoices()->sum("dollar_rate");
+        $this->totalCashIraqy = $supplier->invoices()->sum("purchase_price");
 
-        $this->totalCreditDollar = $supplier->invoices()->where("payment_type","=","credit")->sum("dollar_value");
-        $this->totalCreditIraqy = $supplier->invoices()->where("payment_type","=","credit")->sum("purchase_price");
+        $this->totalTransferDollar = $supplier->transfers()->sum("dollar_rate");
+        $this->totalTransferIraqy = $supplier->transfers()->sum("amount");
+
+        $this->totalRestDollary = $this->totalCashDollar - $this->totalTransferDollar;
+        $this->totalRestIraqy = $this->totalCashIraqy - $this->totalTransferIraqy;
+
 
         return view('livewire.suppliers.supplieraccount',[
             "supplier" => $supplier,

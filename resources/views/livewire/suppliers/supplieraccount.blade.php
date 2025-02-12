@@ -30,7 +30,7 @@
                 <td>{{ $invoice->weight }}</td>
                 <td>{{ $invoice->created_at->format("Y-m-d") }}</td>
                 <td>{{number_format($invoice->purchase_price,2,'.',',')  }}</td>
-                <td>{{number_format($invoice->dollar_value,2,'.',',')  }} $</td>
+                <td>{{number_format($invoice->dollar_rate,2,'.',',')  }} $</td>
                 <td> <a href="{{route('view.invoices.purchase',[$invoice->id])}}">click here</a> </td>
                 <td> <a href="{{route('print.invoices.purchase',[$invoice->id])}}">click here</a> </td>
             </tr>
@@ -72,10 +72,10 @@
                 <tr>
                     <td>{{ number_format($totalCashIraqy,2,'.',',')  }}</td>
                     <td>{{ number_format($totalCashDollar,2,'.',',')  }}</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
+                    <td>{{ number_format($totalTransferDollar,2,'.',',')  }}</td>
+                    <td>{{ number_format($totalTransferIraqy,2,'.',',')  }}</td>
+                    <td>{{ number_format($totalRestIraqy,2,'.',',')  }}</td>
+                    <td>{{ number_format($totalRestDollary,2,'.',',')  }}</td>
                 </tr>
             </tbody>
         </table>
