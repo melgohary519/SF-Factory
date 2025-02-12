@@ -52,17 +52,17 @@ class ProfitReportPage extends Component
             ->sum("purchase_price");
         $this->purchasePriceDollary = PurchaseInvoice::whereBetween('purchase_date', [$this->fromDate, $this->toDate])
             ->where('goods_type', 'like', $itemSearch)
-            ->sum("dollar_rate");
+            ->sum("dollar_value");
 
         $this->salePriceIraqy = SalesInvoice::whereBetween('sale_date', [$this->fromDate, $this->toDate])
             ->where('goods_type', 'like', $itemSearch)
             ->sum("sale_price"); 
         $this->salePriceDollary = SalesInvoice::whereBetween('sale_date', [$this->fromDate, $this->toDate])
             ->where('goods_type', 'like', $itemSearch)
-            ->sum("dollar_rate");
+            ->sum("dollar_value");
 
         $this->expensesIraqy = Expense::whereBetween('expense_date', [$this->fromDate, $this->toDate])->sum("purchase_price");
-        $this->expensesDollary = Expense::whereBetween('expense_date', [$this->fromDate, $this->toDate])->sum("dollar_rate");
+        $this->expensesDollary = Expense::whereBetween('expense_date', [$this->fromDate, $this->toDate])->sum("dollar_value");
 
         $this->restIraqy = ($this->purchasePriceIraqy + $this->expensesIraqy) - $this->salePriceIraqy;
         $this->restDollary = ($this->purchasePriceDollary + $this->expensesDollary) - $this->salePriceDollary;
