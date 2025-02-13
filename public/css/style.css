@@ -171,6 +171,10 @@ body{
     color: white ;
     background: red;
 }
+.print-invoice .sales thead tr th{
+    color: white ;
+    background: #ad20cfcf !important;
+}
 .print-invoice .total *{
     color: black;
 } 
@@ -183,6 +187,9 @@ body{
 .print-invoice .footer {
     background: red;
     font-size: 17px;
+}
+.print-invoice .sales {
+    background: #ad20cfcf !important;
 }
 .print-invoice .bookmarks {
     background-image: url("../images/LOGO-PNG.png");
