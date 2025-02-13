@@ -203,3 +203,18 @@ body{
     background-size: cover;
     opacity: 20%;
 }
+.print-invoice .expense-reson-container{
+    border: 1px solid gray;
+    font-size: 20px;
+}
+.print-invoice .expense-reson-container .header{
+    color: white;
+    background: #663399;
+    right: 36.4%;
+}
+.print-invoice .expense-reson-container p{
+    color: black;
+}
+.print-invoice .expense-footer{
+    color: black;
+}

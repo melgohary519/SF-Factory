@@ -44,7 +44,7 @@ class AddExpense extends Component
 {
     $this->validate($this->rules, $this->messages);
 
-    Expense::create([
+    $e = Expense::create([
         'expense_date' => $this->expenseDate,
         'dollar_rate' => $this->dollarRate,
         'dollar_value' => $this->dollarValue,
@@ -54,6 +54,7 @@ class AddExpense extends Component
 
     session()->flash('message', 'تم إضافة الصرفية بنجاح');
     $this->reset();
+    redirect(route('print.invoices.expenses',[$e->id]));
 }
 public function clearForm()
     {
