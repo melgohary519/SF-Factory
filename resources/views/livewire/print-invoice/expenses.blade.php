@@ -25,11 +25,11 @@
             <table class="table table-striped mt-5 text-center" style="margin-top: 90px !important">
                 <thead>
                     <tr>
-                        <th>المبلغ بالعراقي: </th>
+                        <th class="w-50">المبلغ بالعراقي: </th>
                         <td>{{ $invoice->purchase_price }}</td>
                     </tr>
                     <tr>
-                        <th>المبلغ بالدولار</th>
+                        <th class="w-50">المبلغ بالدولار</th>
                         <td>{{ $invoice->dollar_rate }}</td>
                     </tr>
                     <tr>
