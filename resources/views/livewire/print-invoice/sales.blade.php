@@ -63,6 +63,9 @@
             </div>
         </div>
         <div class="bookmarks"></div>
+        <div class="float-start ms-5 w-25 mt-3">
+            <img class="img-fluid" src="{{asset('images/signature.png')}}" alt="signature" srcset="">
+        </div>
     </div>
 
     <div class="footer sales w-100 position-absolute bottom-0 d-flex justify-content-between mt-5 p-3" >

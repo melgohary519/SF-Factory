@@ -45,6 +45,10 @@
                 <p class="p-4 text-center">{{$invoice->details}}</p>
             </div>
 
+            <div class="float-start ms-5 w-25 mt-3">
+                <img class="img-fluid" src="{{asset('images/signature.png')}}" alt="signature" srcset="">
+            </div>
+
 
 
 

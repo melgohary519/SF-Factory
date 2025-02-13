@@ -74,6 +74,10 @@
                 </thead>
             </table>
 
+            <div class="float-start ms-5 w-25">
+                <img class="img-fluid" src="{{asset('images/signature.png')}}" alt="signature" srcset="">
+            </div>
+
 
             
 

@@ -58,10 +58,14 @@
             <div class="d-flex flex-column text-start">
                 <h2 class="me-3 p-4">{{ $invoice->dollar_rate }} $</h2>
                 <h2 class="me-3 p-4">{{ $invoice->shipping_invoices()->sum('shipping_dollar_rate') }} $</h2>
-                <h2 class="me-3 p-4">{{ $invoice->dollar_rate + $invoice->shipping_invoices()->sum('shipping_dollar_rate') }} $</h2>
+                <h2 class="me-3 p-4">{{ $invoice->dollar_rate + $invoice->shipping_invoices()->sum('shipping_dollar_rate') }}$</h2>
             </div>
         </div>
         <div class="bookmarks"></div>
+
+        <div class="float-start ms-5 w-25 mt-3">
+            <img class="img-fluid" src="{{asset('images/signature.png')}}" alt="signature" srcset="">
+        </div>
     </div>
 
     <div class="footer w-100 position-absolute bottom-0 d-flex justify-content-between mt-5 p-3" >
