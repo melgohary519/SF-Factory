@@ -17,7 +17,7 @@
                 </table>
             </div>
             <div class="invoice-header-left w-50 d-flex justify-content-center align-items-center">
-                <img style="background: rebeccapurple;" src="{{ asset('images/LOGO-PNG.png  ') }}" alt="logo"
+                <img  src="{{ asset('images/invoice_logo.png') }}" alt="logo"
                     class="img-thumbnail rounded">
             </div>
         </div>
