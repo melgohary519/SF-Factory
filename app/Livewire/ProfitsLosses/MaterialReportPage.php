@@ -20,10 +20,19 @@ class MaterialReportPage extends Component
     public $purchaseQuantity = 0;
     public $remainingStock = 0;
 
+    public $inventoryList;
+    public $partnerList;
+
+    public $inventoryName;
+    public $partnerName;
+
     public function render()
     {
         $this->items = Item::all();
         $this->reloadData();
+
+        $this->inventoryList = Item::select('inventory_name')->groupBy('inventory_name')->get();
+        $this->partnerList = Item::select('partner_name')->groupBy('inventory_name')->get();
 
         session()->flash("page_name", "كشف المواد");
         return view('livewire.profits-losses.material-report-page');
@@ -32,14 +41,19 @@ class MaterialReportPage extends Component
         $this->reloadData();
     }
     function reloadData(): void {
-        $this->selectedItemName = Item::find($this->item)->goods_type ?? "_";
+        $this->selectedItemName = Item::find($this->item)->goods_type ?? "%";
 
         $this->purchaseQuantity = PurchaseInvoice::whereBetween('purchase_date', [$this->fromDate, $this->toDate])
-            ->where('goods_type', 'like', $this->selectedItemName ?? "")
+            ->where('goods_type', 'like', $this->selectedItemName ?? "%")
+            ->where('partner_name', 'like', $this->partnerName ?? "%")
+            ->where('inventory_name', 'like', $this->inventoryName ?? "%")
             ->sum("weight");
 
+
         $this->salesQuantity = SalesInvoice::whereBetween('sale_date', [$this->fromDate, $this->toDate])
-            ->where('goods_type', 'like', $this->selectedItemName ?? "")
+            ->where('goods_type', 'like', $this->selectedItemName ?? "%")
+            ->where('partner_name', 'like', $this->partnerName ?? "%")
+            ->where('inventory_name', 'like', $this->inventoryName ?? "%")
             ->sum("weight");
 
         $this->remainingStock = $this->purchaseQuantity - $this->salesQuantity;
