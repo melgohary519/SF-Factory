@@ -26,10 +26,18 @@ class ProfitReportPage extends Component
     public $restIraqy = 0;
     public $restDollary = 0;
 
+    public $inventoryList;
+    public $partnerList;
+    public $inventoryName;
+    public $partnerName;
+
     public function render()
     {
         $this->itemTypes = Item::all();
         $this->partners = Item::all();
+
+        $this->inventoryList = Item::select('inventory_name')->groupBy('inventory_name')->get();
+        $this->partnerList = Item::select('partner_name')->groupBy('inventory_name')->get();
 
         $this->reloadData();
         
@@ -49,16 +57,25 @@ class ProfitReportPage extends Component
 
         $this->purchasePriceIraqy = PurchaseInvoice::whereBetween('purchase_date', [$this->fromDate, $this->toDate])
             ->where('goods_type', 'like', $itemSearch)
+            ->where('partner_name', 'like', $this->partnerName ?? "%")
+            ->where('inventory_name', 'like', $this->inventoryName ?? "%")
             ->sum("purchase_price");
+
         $this->purchasePriceDollary = PurchaseInvoice::whereBetween('purchase_date', [$this->fromDate, $this->toDate])
             ->where('goods_type', 'like', $itemSearch)
+            ->where('partner_name', 'like', $this->partnerName ?? "%")
+            ->where('inventory_name', 'like', $this->inventoryName ?? "%")
             ->sum("dollar_value");
 
         $this->salePriceIraqy = SalesInvoice::whereBetween('sale_date', [$this->fromDate, $this->toDate])
             ->where('goods_type', 'like', $itemSearch)
+            ->where('partner_name', 'like', $this->partnerName ?? "%")
+            ->where('inventory_name', 'like', $this->inventoryName ?? "%")
             ->sum("sale_price"); 
         $this->salePriceDollary = SalesInvoice::whereBetween('sale_date', [$this->fromDate, $this->toDate])
             ->where('goods_type', 'like', $itemSearch)
+            ->where('partner_name', 'like', $this->partnerName ?? "%")
+            ->where('inventory_name', 'like', $this->inventoryName ?? "%")
             ->sum("dollar_value");
 
         $this->expensesIraqy = Expense::whereBetween('expense_date', [$this->fromDate, $this->toDate])->sum("purchase_price");
