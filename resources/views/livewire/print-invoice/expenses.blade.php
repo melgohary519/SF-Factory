@@ -71,4 +71,5 @@
             </div>
         </div>
     </div>
+    <livewire:components.auto-print-invoice />
 </div>

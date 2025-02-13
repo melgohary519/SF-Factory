@@ -150,7 +150,7 @@ body{
 
 .print-invoice{
     width: 8.3in;
-    height: 11.7in;
+    height: 11in;
     background: white !important;
     margin: auto;
 }
@@ -222,4 +222,18 @@ body{
 }
 .print-invoice .expense-footer{
     color: black;
+}
+
+
+
+
+
+@media print {
+    .headNav,.headNav,.sidebarHedaer,.footerContainerPage {
+        display: none;
+    }
+    .invoice-content{
+        margin: 0 !important;
+    }
+
 }

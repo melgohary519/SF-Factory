@@ -1,4 +1,4 @@
-<div>
+<div class="sidebarHedaer">
     <style>
         body {
             font-family: Arial, sans-serif;

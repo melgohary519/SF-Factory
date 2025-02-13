@@ -76,4 +76,6 @@
             +964 750 178 7725 - +964 782 387 97696
         </div>
     </div>
+
+    <livewire:components.auto-print-invoice />
 </div>
