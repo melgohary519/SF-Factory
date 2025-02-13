@@ -11,6 +11,7 @@
         <div class="row m-5">
             <a href="{{route('transfers.account.details','total')}}" class="btn btn-success btn-lg p-4 w-100 bg4 border-0"  style="font-size: 250%;" >المجموع</a>
         </div>
+        
     </div>
 
 </div>

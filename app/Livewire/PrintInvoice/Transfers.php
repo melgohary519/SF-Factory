@@ -7,16 +7,16 @@ use Livewire\Component;
 
 class Transfers extends Component
 {
-    public $transfer;
-    public $transfer_id;
+    public $invoice;
+    public $invoice_id;
 
-    function mount($transfer) {
-        $this->transfer_id = $transfer;
+    function mount($invoice) {
+        $this->invoice_id = $invoice;
     }
     public function render()
     {
         session()->flash("page_name", "طباعة تحويلات ");
-        $this->transfer = Transfer::findOrFail($this->transfer_id);
+        $this->invoice = Transfer::findOrFail($this->invoice_id);
         return view('livewire.print-invoice.transfers');
     }
 }

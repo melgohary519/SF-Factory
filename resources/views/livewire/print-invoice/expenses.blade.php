@@ -49,7 +49,7 @@
 
 
 
-        {{-- <div class="bookmarks"></div> --}}
+        <div class="bookmarks"></div>
     </div>
 
     <div class="expense-footer w-100 position-absolute bottom-0 ms-5">
