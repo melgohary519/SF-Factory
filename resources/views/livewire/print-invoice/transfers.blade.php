@@ -2,15 +2,15 @@
     <div class="invoice-content  p-3 mt-5 ">
         <div class="invoice-header d-flex mt-3">
             <div class="invoice-header-right w-50 align-self-center">
-                <h1 class="pb-5" style="color: blueviolet">فاتورة حوالات</h1>
+                <h1 class="pb-5" style="color: blueviolet">{{$invoiceLabels['invoice_title']}}</h1>
                 <table class="w-100 text-center">
                     <thead>
                         <tr>
-                            <th>الرقم</th>
+                            <th>{{$invoiceLabels['number']}}</th>
                             <td>{{ $invoice->id }}</td>
                         </tr>
                         <tr>
-                            <th>التاريخ</th>
+                            <th>{{$invoiceLabels['date']}}</th>
                             <td>{{ $invoice->transfer_date }}</td>
                         </tr>
                     </thead>
@@ -25,15 +25,15 @@
             <table class="table table-striped mt-5 text-center" style="margin-top: 90px !important">
                 <thead>
                     <tr>
-                        <th class="w-50">المبلغ بالعراقي: </th>
+                        <th class="w-50">{{$invoiceLabels['amount_iqd']}} </th>
                         <td>{{ $invoice->amount }}</td>
                     </tr>
                     <tr>
-                        <th class="w-50">المبلغ بالدولار</th>
+                        <th class="w-50"> {{$invoiceLabels['amount_usd']}}</th>
                         <td>{{ $invoice->dollar_rate }}</td>
                     </tr>
                     <tr>
-                        <th class="text-white" style=" background: #663399">قيمة الدولار الواحد </th>
+                        <th class="text-white" style=" background: #663399">{{$invoiceLabels['usd_value']}}   </th>
                         <td class="text-white" style=" background: #663399">{{ $invoice->dollar_value }}</td>
                     </tr>
                 </thead>
@@ -43,31 +43,43 @@
             <table class="table table-striped mt-5 text-center" style="margin-top: 40px !important">
                 <thead>
                     <tr>
-                        <th class="w-50">سبب الحوالة:</th>
+                        <th class="w-50">{{ $invoiceLabels['reason'] }}</th>
                         <td>{{ $invoice->reason }}</td>
                     </tr>
                     <tr>
-                        <th class="w-50">نوع الحوالة:</th>
+                        <th class="w-50">
+                            {{$invoiceLabels['type']}}
+                        </th>
                         <td>{{ $invoice->type }}</td>
                     </tr>
                     <tr>
-                        <th class="w-50">اسم المستلم:</th>
+                        <th class="w-50">
+                            {{$invoiceLabels['recipient_name']}}
+                        </th>
                         <td>{{ $invoice->recipient_name }}</td>
                     </tr>
                     <tr>
-                        <th class="w-50">رقم هاتف المستلم:</th>
+                        <th class="w-50">
+                            {{$invoiceLabels['recipient_phone']}}
+                        </th>
                         <td>{{ $invoice->recipient_phone }}</td>
                     </tr>
                     <tr>
-                        <th class="w-50">اسم المستفيد:</th>
+                        <th class="w-50">
+                            {{$invoiceLabels['person_name']}}
+                        </th>
                         <td>{{ $invoice->person_name }}</td>
                     </tr>
                     <tr>
-                        <th class="w-50">رقم هاتف المستفيد:</th>
+                        <th class="w-50">
+                            {{$invoiceLabels['person_phone']}}
+                        </th>
                         <td>{{ $invoice->person_phone }}</td>
                     </tr>
                     <tr>
-                        <th class="w-50">عنوان المستفيد:</th>
+                        <th class="w-50">
+                            {{$invoiceLabels['person_address']}}
+                        </th>
                         <td>{{ $invoice->person_address }}</td>
                     </tr>
                     
@@ -90,10 +102,10 @@
 
     <div class="footer sales w-100 position-absolute bottom-0 d-flex justify-content-between mt-5 p-3" >
         <div>
-            العراق - أربيل - برج العدالة - طابق 13 - مكتب 28
+            {{ $invoiceLabels['address'] }}
         </div>
         <div dir="ltr">
-            +964 750 178 7725 - +964 782 387 97696
+            {{ $invoiceLabels['phone'] }}
         </div>
     </div>
 

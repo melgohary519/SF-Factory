@@ -76,10 +76,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/shipping', \App\Livewire\Shipping\ShippingInvoice::class)->name('shipping.add');
 
     // print invoices
-    Route::get('/print/invoices/purchase/{invoice}', \App\Livewire\PrintInvoice\Purchase::class)->name('print.invoices.purchase');
-    Route::get('/print/invoices/sales/{invoice}', \App\Livewire\PrintInvoice\Sales::class)->name('print.invoices.sales');
-    Route::get('/print/invoices/expenses/{invoice}', \App\Livewire\PrintInvoice\Expenses::class)->name('print.invoices.expenses');
-    Route::get('/print/invoices/transfers/{invoice}', \App\Livewire\PrintInvoice\Transfers::class)->name('print.invoices.transfers');
+    Route::get('/print/invoices/purchase/{invoice}/{lang}', \App\Livewire\PrintInvoice\Purchase::class)->name('print.invoices.purchase');
+    Route::get('/print/invoices/sales/{invoice}/{lang}', \App\Livewire\PrintInvoice\Sales::class)->name('print.invoices.sales');
+    Route::get('/print/invoices/expenses/{invoice}/{lang}', \App\Livewire\PrintInvoice\Expenses::class)->name('print.invoices.expenses');
+    Route::get('/print/invoices/transfers/{invoice}/{lang}', \App\Livewire\PrintInvoice\Transfers::class)->name('print.invoices.transfers');
 });
 
 Route::get('/test', function () {

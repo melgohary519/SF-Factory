@@ -2,15 +2,15 @@
     <div class="invoice-content  p-3 mt-5 ">
         <div class="invoice-header d-flex mt-3">
             <div class="invoice-header-right w-50 align-self-center">
-                <h1 class="pb-5">فاتورة صرف</h1>
+                <h1 class="pb-5"> {{$invoiceLabels['invoice_title']}}</h1>
                 <table class="w-100 text-center">
                     <thead>
                         <tr>
-                            <th>الرقم</th>
+                            <th>{{$invoiceLabels['number']}}</th>
                             <td>{{ $invoice->id }}</td>
                         </tr>
                         <tr>
-                            <th>التاريخ</th>
+                            <th>{{$invoiceLabels['date']}}</th>
                             <td>{{ $invoice->expense_date }}</td>
                         </tr>
                     </thead>
@@ -25,15 +25,15 @@
             <table class="table table-striped mt-5 text-center" style="margin-top: 90px !important">
                 <thead>
                     <tr>
-                        <th class="w-50">المبلغ بالعراقي: </th>
+                        <th class="w-50">{{$invoiceLabels['amount_iqd']}} </th>
                         <td>{{ $invoice->purchase_price }}</td>
                     </tr>
                     <tr>
-                        <th class="w-50">المبلغ بالدولار</th>
+                        <th class="w-50">{{$invoiceLabels['amount_usd']}} </th>
                         <td>{{ $invoice->dollar_rate }}</td>
                     </tr>
                     <tr>
-                        <th class="text-white" style=" background: #663399">قيمة الدولار الواحد </th>
+                        <th class="text-white" style=" background: #663399">{{$invoiceLabels['usd_value']}}   </th>
                         <td class="text-white" style=" background: #663399">{{ $invoice->dollar_value }}</td>
                     </tr>
                 </thead>
@@ -41,7 +41,7 @@
 
 
             <div class="expense-reson-container position-relative" style="margin-top: 90px !important">>
-                <span class="header p-2 pe-5 position-absolute ps-5">سبب الصرف</span>
+                <span class="header p-2 pe-5 position-absolute ps-5"> {{$invoiceLabels['expense_reason']}}</span>
                 <p class="p-4 text-center">{{$invoice->details}}</p>
             </div>
 
@@ -60,14 +60,14 @@
         <hr style="color: black" class="ms-5 me-5">
         <div class="d-flex justify-content-between ms-5 me-5">
             <div>
-                العنوان : العراق - أربيل - شارع 100
+                {{$invoiceLabels['address1']}}
                 <br>
-                برج العدالة - طابق 13 - مكتب 28
+                {{$invoiceLabels['address2']}}
             </div>
             <div dir="ltr">
-                0750 178 7725 
+                {{$invoiceLabels['phone1']}}
                 <br>
-                0782 387 9769
+                {{$invoiceLabels['phone2']}}
             </div>
         </div>
     </div>

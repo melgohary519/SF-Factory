@@ -54,7 +54,7 @@ class AddExpense extends Component
 
     session()->flash('message', 'تم إضافة الصرفية بنجاح');
     $this->reset();
-    redirect(route('print.invoices.expenses',[$e->id]));
+    redirect(route('print.invoices.expenses',[$e->id,'ar']));
 }
 public function clearForm()
     {

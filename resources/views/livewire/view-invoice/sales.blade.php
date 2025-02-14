@@ -43,7 +43,7 @@
         </div>
 
         <h2 class="mt-5">
-            <a class="btn btn-success" href="{{route('print.invoices.sales',[$invoice->id])}}"> طباعة عربي</a>
+            <a class="btn btn-success" href="{{route('print.invoices.sales',[$invoice->id,'ar'])}}"> طباعة عربي</a>
         </h2>
 
     </div>

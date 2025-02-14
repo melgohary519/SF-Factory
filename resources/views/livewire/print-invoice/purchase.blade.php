@@ -2,15 +2,17 @@
     <div class="invoice-content  p-3 mt-5 ">
         <div class="invoice-header d-flex mt-3">
             <div class="invoice-header-right w-50 align-self-center">
-                <h1 class="pb-5">فاتورة شراء</h1>
+                <h1 class="pb-5">
+                    {{$invoiceLabels['invoice_title']}}
+                </h1>
                 <table class="w-100 text-center">
                     <thead>
                         <tr>
-                            <th>الرقم</th>
+                            <th>{{$invoiceLabels['number']}}</th>
                             <td>{{ $invoice->id }}</td>
                         </tr>
                         <tr>
-                            <th>التاريخ</th>
+                            <th>{{$invoiceLabels['date']}}</th>
                             <td>{{ $invoice->purchase_date }}</td>
                         </tr>
                     </thead>
@@ -24,7 +26,7 @@
     
     
         <div class="sideName mt-5 p-3 text-center">
-            السيد :
+            {{$invoiceLabels['mr']}}
             {{ $invoice->supplier_name }}
         </div>
     
@@ -32,10 +34,10 @@
             <thead>
                 <tr>
                     <th>SL.</th>
-                    <th>اسم المادة</th>
-                    <th>سعر الطن بالدولار</th>
-                    <th>الوزن</th>
-                    <th>اجمالي</th>
+                    <th>{{ $invoiceLabels['product_name'] }}</th>
+                    <th>{{ $invoiceLabels['ton_price'] }}</th>
+                    <th>{{ $invoiceLabels['weight'] }}</th>
+                    <th>{{ $invoiceLabels['total'] }}</th>
                 </tr>
             </thead>
             <tbody>
@@ -51,9 +53,9 @@
         
         <div class="total mt-5 d-flex">
             <div class="d-flex flex-column">
-                <h2 class="me-3 p-4 bg-body">المجموع : </h2>
-                <h2 class="me-3 p-4 bg-body">أجور الشحن : </h2>
-                <h2 class="me-3 p-4 bg-body">الحساب : </h2>
+                <h2 class="me-3 p-4 bg-body">{{ $invoiceLabels['total2'] }}</h2>
+                <h2 class="me-3 p-4 bg-body">{{ $invoiceLabels['shipp'] }}</h2>
+                <h2 class="me-3 p-4 bg-body">{{ $invoiceLabels['total_amount'] }}</h2>
             </div>
             <div class="d-flex flex-column text-start">
                 <h2 class="me-3 p-4">{{ $invoice->dollar_rate }} $</h2>
@@ -70,10 +72,10 @@
 
     <div class="footer w-100 position-absolute bottom-0 d-flex justify-content-between mt-5 p-3" >
         <div>
-            العراق - أربيل - برج العدالة - طابق 13 - مكتب 28
+            {{ $invoiceLabels['address'] }}
         </div>
         <div dir="ltr">
-            +964 750 178 7725 - +964 782 387 97696
+            {{ $invoiceLabels['phone'] }}
         </div>
     </div>
     <livewire:components.auto-print-invoice />
