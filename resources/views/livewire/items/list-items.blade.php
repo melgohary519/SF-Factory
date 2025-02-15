@@ -41,7 +41,7 @@
                     <td>{{ $item->supplier_name }}</td>
                     <td>{{ $item->partner_name }}</td>
                     <td>{{  number_format($item->purchase_price,2,'.',',') }}</td>
-                    <td>{{ number_format($item->dollar_rate,2,'.',',') }} $</td>
+                    <td>{{ number_format($item->dollar_value,2,'.',',') }} $</td>
                 </tr>
                 @endforeach
 
