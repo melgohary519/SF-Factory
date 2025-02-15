@@ -37,7 +37,7 @@ class AddSalesInvoice extends Component
         $this->traders = Trader::all();
         $this->items = Item::all();
         $this->inventoryList = Item::select('inventory_name')->groupBy('inventory_name')->get();
-        $this->partnerList = Item::select('partner_name')->groupBy('inventory_name')->get();
+        $this->partnerList = Item::select('partner_name')->groupBy('partner_name')->get();
         return view('livewire.sales.add-sales-invoice');
     }
 
