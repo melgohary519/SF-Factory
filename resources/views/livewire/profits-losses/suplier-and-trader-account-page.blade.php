@@ -64,7 +64,7 @@
 
         <div class="row m-5">
             <div class="d-flex flex-column gap-3 justify-content-center ">
-                @if ($type == 'suppliers')
+                @if ($type == 'supplier')
                     <div class="row justify-content-center">
                         <a style="background-color: #272E3A !important"
                             href="{{ route('transfers.account.details', 'suppliers') }}"
@@ -75,6 +75,10 @@
                             href="{{ route('transfers.account.details', 'traders') }}" class="p-3 rounded bg4 w-25">عرض
                             فواتير
                             الحوالات </a>
+
+                            @if ($selectedPersonId != null && $fromDate != null && $toDate != null)  
+                                <a href="#" style="background-color: #272E3A !important" class="p-3 rounded bg4 w-25" wire:click="exportData">طباعة كشف</a>   
+                            @endif
                     </div>
                 @endif
 
@@ -89,6 +93,8 @@
                             href="{{ route('transfers.account.details', 'traders') }}" class="p-3 rounded bg4 w-25">عرض
                             فواتير
                             الحوالات  من التجار</a>
+
+                            <a href="#" style="background-color: #272E3A !important" class="p-3 rounded bg4 w-25" wire:click="exportData">طباعة كشف</a>  
                     </div>
                 @endif
 
@@ -104,7 +110,9 @@
 
             </div>
         </div>
+        
     </div>
 
+    
 
 </div>
