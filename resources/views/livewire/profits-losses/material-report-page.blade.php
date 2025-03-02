@@ -70,7 +70,18 @@
             </div>
         </div>
 
+        
+            <div class="row m-5">
+                <div class="d-flex flex-column gap-3 justify-content-center ">
+                        <div class="row justify-content-center">
+                            <a href="#" style="background-color: #272E3A !important" class="p-3 rounded bg4 w-25" wire:click="exportData">طباعة كشف</a>   
+                            @if ($fromDate != null && $toDate != null)  
+                            @endif
+                        </div>
+                </div>
+            </div>
     </div>
+
 
 
 </div>
