@@ -93,8 +93,9 @@
                             href="{{ route('transfers.account.details', 'traders') }}" class="p-3 rounded bg4 w-25">عرض
                             فواتير
                             الحوالات  من التجار</a>
-
+                            @if ($selectedPersonId != null && $fromDate != null && $toDate != null)
                             <a href="#" style="background-color: #272E3A !important" class="p-3 rounded bg4 w-25" wire:click="exportData">طباعة كشف</a>  
+                            @endif
                     </div>
                 @endif
 

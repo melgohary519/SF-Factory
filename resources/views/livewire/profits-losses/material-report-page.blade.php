@@ -75,7 +75,7 @@
                 <div class="d-flex flex-column gap-3 justify-content-center ">
                         <div class="row justify-content-center">
                             @if ($fromDate != null && $toDate != null)  
-                            <a href="#" style="background-color: #272E3A !important" class="p-3 rounded bg4 w-25" wire:click="exportData">طباعة كشف</a>   
+                                <a href="#" style="background-color: #272E3A !important" class="p-3 rounded bg4 w-25" wire:click="exportData">طباعة كشف</a>   
                             @endif
                         </div>
                 </div>
