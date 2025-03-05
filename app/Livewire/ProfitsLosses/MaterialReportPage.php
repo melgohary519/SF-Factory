@@ -6,6 +6,9 @@ use App\Models\Item;
 use App\Models\PurchaseInvoice;
 use App\Models\SalesInvoice;
 use Livewire\Component;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Style\Alignment;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
 class MaterialReportPage extends Component
 {
@@ -65,23 +68,19 @@ class MaterialReportPage extends Component
 
     public function exportData()
     {
-        $data = [];
-        $filename = '';
+        $spreadsheet = new Spreadsheet();
+        $sheet = $spreadsheet->getActiveSheet();
+        $currentRowIndex = 0;
 
-        function sumArrayIndex($data, $index)
-        {
+        // headers
+        $sheet->setCellValue('A1', 'كشف المواد');
+        $sheet->setCellValue('A2', 'الفترة من');
+        $sheet->setCellValue('B2', $this->fromDate);
+        $sheet->setCellValue('A3', 'إلى');
+        $sheet->setCellValue('B3', $this->toDate);
 
-            return array_sum(array_map(function ($item) use ($index) {
-                return isset($item[$index]) && !is_string($item[$index]) ? $item[$index] : 0;
-            }, $data));
-        }
 
-
-        $data[] = ['كشف  المواد'];
-        $data[] = ["الفترة من", $this->fromDate];
-        $data[] = ["الي", $this->toDate];
-        $data[] = [];
-        $data[] = [
+        $headers = [
             "رقم",
             "نوع البضاعة",
             "الكمية المشتراة",
@@ -92,9 +91,13 @@ class MaterialReportPage extends Component
             "الكمية المتبقية في المخزن",
         ];
 
-
+        $sheet->fromArray($headers, null, 'A5');
+        
         $invoicesData = PurchaseInvoice::whereBetween('purchase_date', [$this->fromDate, $this->toDate])->get();
         $invoicesDataCount = PurchaseInvoice::whereBetween('purchase_date', [$this->fromDate, $this->toDate])->count();
+        $rowIndex = 6;
+        $startRowIndexDataValues = $rowIndex;
+
         for ($i = 0; $i < $invoicesDataCount; $i++) {
             $d = $invoicesData[$i];
             $salesCount = SalesInvoice::whereBetween('sale_date', [$this->fromDate, $this->toDate])
@@ -102,7 +105,7 @@ class MaterialReportPage extends Component
                 ->where('inventory_name', '=', $d->inventory_name)
                 ->sum("weight");
 
-            $data[] = [
+            $row = [
                 $i + 1,
                 $d->goods_type,
                 $d->weight,
@@ -112,49 +115,34 @@ class MaterialReportPage extends Component
                 $salesCount,
                 $d->weight - $salesCount,
             ];
+            $sheet->fromArray($row, null, "A$rowIndex");
+            $rowIndex++;
         }
 
-        $data[] = [];
-            $data[] = [];
-            $data[] = [];
-            $data[] = [];
-            $data[] = [
-                '',
-                '',
-                sumArrayIndex($data,2),
-                '',
-                '',
-                '',
-                sumArrayIndex($data,6),
-                sumArrayIndex($data,7),
+        $currentRowIndex = $rowIndex +2 ;
+        $sheet->setCellValue("C$currentRowIndex", "=SUM(C$startRowIndexDataValues:C$rowIndex)");
+        $sheet->setCellValue("G$currentRowIndex", "=SUM(G$startRowIndexDataValues:G$rowIndex)");
+        $sheet->setCellValue("H$currentRowIndex", "=SUM(H$startRowIndexDataValues:H$rowIndex)");
 
-                
-            ];
-            $data[] = [
-                '',
-                '',
-                'مجموع الحقول',
-                '',
-                '',
-                '',
-                'مجموع الحقول',
-                'مجموع الحقول',
-            ];
+        $currentRowIndex = $currentRowIndex + 1;
+        $text = "مجموع الحقول";
+        $sheet->setCellValue("C$currentRowIndex", $text);
+        $sheet->setCellValue("G$currentRowIndex", $text);
+        $sheet->setCellValue("H$currentRowIndex", $text);
+
+        $sheet->getStyle("A1:L$currentRowIndex")->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
+        $sheet->getStyle("A1:L$currentRowIndex")->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
 
 
+        foreach (range('A', $sheet->getHighestColumn()) as $col) {
+            $sheet->getColumnDimension($col)->setAutoSize(true);
+        }
 
-       
 
-        // $filename = 'users_' . date('Ymd_His') . '.csv';
-        $filename = "كشف المواد_" . date('d_m_Y') . '.csv';
-        return response()->streamDownload(function () use ($data) {
-            $handle = fopen('php://output', 'w');
+        $writer = new Xlsx($spreadsheet);
+        $filePath = storage_path("app/public/كشف المواد.xlsx");
+        $writer->save($filePath);
 
-            foreach ($data as $row) {
-                fputcsv($handle, $row);
-            }
-
-            fclose($handle);
-        }, $filename);
+        return response()->download($filePath)->deleteFileAfterSend(true);
     }
 }

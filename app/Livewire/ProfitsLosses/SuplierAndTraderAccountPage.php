@@ -8,6 +8,9 @@ use App\Models\Supplier;
 use App\Models\Trader;
 use Livewire\Component;
 use Maatwebsite\Excel\Excel;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Style\Alignment;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 use Response;
 
 class SuplierAndTraderAccountPage extends Component
@@ -102,38 +105,36 @@ class SuplierAndTraderAccountPage extends Component
 
     public function exportData()
     {
-        $data = [];
         $filename = '';
-
-        function sumArrayIndex($data, $index)    {
-            return array_sum(array_map(function ($item) use ($index) {
-                return isset($item[$index]) && !is_string($item[$index]) ? $item[$index] : 0;
-            }, $data));
-        }
-
+        $spreadsheet = new Spreadsheet();
+        $sheet = $spreadsheet->getActiveSheet();
+        $currentRowIndex = 0;
         if ($this->type == "supplier") {
-            $supplier = Supplier::find($this->selectedPersonId);
-            $filename = "كشف حساب المورد (" . $supplier->name . ") ";
-            $data[] = ['كشف حساب المورد', $supplier->name];
-            $data[] = ["الفترة من", $this->fromDate];
-            $data[] = ["الي", $this->toDate];
-            $data[] = [];
-            $data[] = [
-                "رقم",
-                "رقم فاتورة الشراء",
-                "نوع البضاعة",
-                "الكمية المشتراة",
-                "مبلغ الشراء بالدولار",
-                "حالة الدفع",
-                "مبلغ الشراء بالعراقي",
-                "تاريخ الشراء",
-                "مبلغ الحوالة دولار",
-                "مبلغ الحوالة عراقي",
-                "باقي حساب عراقي",
-                "باقي حساب دولار",
+            $supplier = Supplier::find($this->selectedPersonId);            
+            $filename = "كشف حساب المورد (" . $supplier->name . ").xlsx";
+
+            // العناوين
+            $sheet->setCellValue('A1', 'كشف حساب المورد');
+            $sheet->setCellValue('B1', $supplier->name);
+            $sheet->setCellValue('A2', 'الفترة من');
+            $sheet->setCellValue('B2', $this->fromDate);
+            $sheet->setCellValue('A3', 'إلى');
+            $sheet->setCellValue('B3', $this->toDate);
+            
+             // إضافة عناوين الأعمدة
+            $headers = [
+                "رقم", "رقم فاتورة الشراء", "نوع البضاعة", "الكمية المشتراة", 
+                "مبلغ الشراء بالدولار", "حالة الدفع", "مبلغ الشراء بالعراقي", 
+                "تاريخ الشراء", "مبلغ الحوالة دولار", "مبلغ الحوالة عراقي", 
+                "باقي حساب عراقي", "باقي حساب دولار"
             ];
+
+            $sheet->fromArray($headers, null, 'A5');
+
             $dataValues = $supplier->invoices()->whereBetween('purchase_date', [$this->fromDate, $this->toDate])->get();
             $dataValuesCount = $supplier->invoices()->whereBetween('purchase_date', [$this->fromDate, $this->toDate])->count();
+            $rowIndex = 6;
+            $startRowIndexDataValues = $rowIndex;
             for ($i = 0; $i < $dataValuesCount; $i++) {
                 $row = [
                     $i + 1,
@@ -155,50 +156,43 @@ class SuplierAndTraderAccountPage extends Component
                 }
 
 
-                $data[] = $row;
+                $sheet->fromArray($row, null, "A$rowIndex");
+                $rowIndex++;
             }
-            $data[] = [];
-            $data[] = [];
-            $data[] = [];
-            $data[] = [];
-            $data[] = [
-                '',
-                '',
-                '',
-                sumArrayIndex($data,3),
-                sumArrayIndex($data,4),
-                '',
-                sumArrayIndex($data,6),
-                '',
-                sumArrayIndex($data,8),
-                '',
-                sumArrayIndex($data,10),
-                sumArrayIndex($data,11),
-            ];
-            $data[] = [
-                '',
-                '',
-                '',
-                'مجموع الحقول',
-                'مجموع الحقول',
-                '',
-                'مجموع الحقول',
-                '',
-                'مجموع الحقول',
-                '',
-                'مجموع الحقول',
-                'مجموع الحقول',
-            ];
+
+            $currentRowIndex = $rowIndex +2 ;
+            $sheet->setCellValue("D$currentRowIndex", "=SUM(D$startRowIndexDataValues:D$rowIndex)");
+            $sheet->setCellValue("E$currentRowIndex", "=SUM(E$startRowIndexDataValues:E$rowIndex)");
+            $sheet->setCellValue("G$currentRowIndex", "=SUM(G$startRowIndexDataValues:G$rowIndex)");
+            $sheet->setCellValue("I$currentRowIndex", "=SUM(I$startRowIndexDataValues:I$rowIndex)");
+            $sheet->setCellValue("K$currentRowIndex", "=SUM(K$startRowIndexDataValues:K$rowIndex)");
+            $sheet->setCellValue("L$currentRowIndex", "=SUM(L$startRowIndexDataValues:L$rowIndex)");
+
+            $currentRowIndex = $currentRowIndex + 1;
+            $text = "مجموع الحقول";
+            $sheet->setCellValue("D$currentRowIndex", $text);
+            $sheet->setCellValue("E$currentRowIndex", $text);
+            $sheet->setCellValue("G$currentRowIndex", $text);
+            $sheet->setCellValue("I$currentRowIndex", $text);
+            $sheet->setCellValue("K$currentRowIndex", $text);
+            $sheet->setCellValue("L$currentRowIndex", $text);
 
         
         } elseif ($this->type == "trader") {
+
             $trader = Trader::find($this->selectedPersonId);
-            $filename = "كشف حساب التاجر (" . $trader->name . ") ";
-            $data[] = ['كشف حساب المورد', $trader->name];
-            $data[] = ["الفترة التاجر", $this->fromDate];
-            $data[] = ["الي", $this->toDate];
-            $data[] = [];
-            $data[] = [
+            $filename = "كشف حساب التاجر (" . $trader->name . ").xlsx";
+
+            // العناوين
+            $sheet->setCellValue('A1', 'كشف حساب التاجر');
+            $sheet->setCellValue('B1', $trader->name);
+            $sheet->setCellValue('A2', 'الفترة من');
+            $sheet->setCellValue('B2', $this->fromDate);
+            $sheet->setCellValue('A3', 'إلى');
+            $sheet->setCellValue('B3', $this->toDate);
+            
+             // إضافة عناوين الأعمدة
+            $headers = [
                 "رقم",
                 "رقم فاتورة البيع",
                 "نوع البضاعة",
@@ -212,8 +206,14 @@ class SuplierAndTraderAccountPage extends Component
                 "باقي حساب عراقي",
                 "باقي حساب دولار",
             ];
+
+            $sheet->fromArray($headers, null, 'A5');
+
             $dataValues = $trader->invoices()->whereBetween('sale_date', [$this->fromDate, $this->toDate])->get();
             $dataValuesCount = $trader->invoices()->whereBetween('sale_date', [$this->fromDate, $this->toDate])->count();
+            $rowIndex = 6;
+            $startRowIndexDataValues = $rowIndex;
+
             for ($i = 0; $i < $dataValuesCount; $i++) {
                 $row = [
                     $i + 1,
@@ -235,58 +235,41 @@ class SuplierAndTraderAccountPage extends Component
                 }
 
 
-                $data[] = $row;
+                $sheet->fromArray($row, null, "A$rowIndex");
+                $rowIndex++;
             }
-            $data[] = [];
-            $data[] = [];
-            $data[] = [];
-            $data[] = [];
-            $data[] = [
-                '',
-                '',
-                '',
-                sumArrayIndex($data,3),
-                sumArrayIndex($data,4),
-                '',
-                sumArrayIndex($data,6),
-                '',
-                sumArrayIndex($data,8),
-                '',
-                sumArrayIndex($data,10),
-                sumArrayIndex($data,11),
-            ];
-            $data[] = [
-                '',
-                '',
-                '',
-                'مجموع الحقول',
-                'مجموع الحقول',
-                '',
-                'مجموع الحقول',
-                '',
-                'مجموع الحقول',
-                '',
-                'مجموع الحقول',
-                'مجموع الحقول',
-            ];
-            
+
+            $currentRowIndex = $rowIndex + 2;
+            $sheet->setCellValue("D$currentRowIndex", "=SUM(D$startRowIndexDataValues:D$rowIndex)");
+            $sheet->setCellValue("E$currentRowIndex", "=SUM(E$startRowIndexDataValues:E$rowIndex)");
+            $sheet->setCellValue("G$currentRowIndex", "=SUM(G$startRowIndexDataValues:G$rowIndex)");
+            $sheet->setCellValue("I$currentRowIndex", "=SUM(I$startRowIndexDataValues:I$rowIndex)");
+            $sheet->setCellValue("K$currentRowIndex", "=SUM(K$startRowIndexDataValues:K$rowIndex)");
+            $sheet->setCellValue("L$currentRowIndex", "=SUM(L$startRowIndexDataValues:L$rowIndex)");
+
+            $currentRowIndex = $currentRowIndex + 1;
+            $text = "مجموع الحقول";
+            $sheet->setCellValue("D$currentRowIndex", $text);
+            $sheet->setCellValue("E$currentRowIndex", $text);
+            $sheet->setCellValue("G$currentRowIndex", $text);
+            $sheet->setCellValue("I$currentRowIndex", $text);
+            $sheet->setCellValue("K$currentRowIndex", $text);
+            $sheet->setCellValue("L$currentRowIndex", $text);
+
+        }
+        $sheet->getStyle("A1:L$currentRowIndex")->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
+        $sheet->getStyle("A1:L$currentRowIndex")->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
+
+
+        foreach (range('A', $sheet->getHighestColumn()) as $col) {
+            $sheet->getColumnDimension($col)->setAutoSize(true);
         }
 
 
+        $writer = new Xlsx($spreadsheet);
+        $filePath = storage_path("app/public/$filename");
+        $writer->save($filePath);
 
-
-
-
-        // $filename = 'users_' . date('Ymd_His') . '.csv';
-        $filename = $filename . "_" . date('d_m_Y') . '.csv';
-        return response()->streamDownload(function () use ($data) {
-            $handle = fopen('php://output', 'w');
-
-            foreach ($data as $row) {
-                fputcsv($handle, $row);
-            }
-
-            fclose($handle);
-        }, $filename);
+        return response()->download($filePath)->deleteFileAfterSend(true);
     }
 }
