@@ -5,7 +5,7 @@ namespace App\Livewire\Users;
 use App\Models\User;
 use Livewire\Component;
 
-class UserِAccount extends Component
+class UserAccount extends Component
 {
     public $user_id;
     function mount($user_id)

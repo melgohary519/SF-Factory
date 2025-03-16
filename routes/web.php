@@ -59,7 +59,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/users/list', \App\Livewire\Users\ListUsers::class)->name('users.list');
     Route::get('/users/add', \App\Livewire\Users\AddUser::class)->name('users.add');
-    Route::get('/users/account/{user_id}', \App\Livewire\Users\UserِAccount::class)->name('users.account');
+    Route::get('/users/account/{user_id}', \App\Livewire\Users\UserAccount::class)->name('users.account');
 
     Route::get('/profits-losses', ProfitLossPage::class)->name('profitlosses.page');
     Route::get('/profit/{type}', SuplierAndTraderProfitPage::class)->name('profitlosses.supplierandtrader.profit');
